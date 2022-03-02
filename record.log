@@ -1,0 +1,1484 @@
+[2022-02-15 10:10:06,504] [INFO    ] [MainThread] [__init__]: Connecting to wss://ws.testnet.bitmex.com/realtime?subscribe=instrument:XBTUSDT,orderBookL2:XBTUSDT,quote:XBTUSDT,trade:XBTUSDT,execution:XBTUSDT,order:XBTUSDT,margin,position:XBTUSDT,wallet
+[2022-02-15 10:10:06,504] [INFO    ] [MainThread] [__get_auth]: Authenticating with API Key.
+[2022-02-15 10:10:07,505] [INFO    ] [MainThread] [__init__]: Connected to WS.
+[2022-02-15 10:10:07,724] [INFO    ] [MainThread] [__init__]: Got all market data. Starting.
+[2022-02-15 10:10:07,724] [INFO    ] [MainThread] [get_node]: Creating new node for MomentumSignalNodeConfig(half_life=11, threshold=0.2).
+[2022-02-15 10:10:07,724] [INFO    ] [MainThread] [get_node]: Creating new node for WindowedPairNodeConfig(node_config=MomentumIndicatorNodeConfig(half_life=11), n=2, n2=12).
+[2022-02-15 10:10:07,724] [INFO    ] [MainThread] [get_node]: Creating new node for MomentumIndicatorNodeConfig(half_life=11).
+[2022-02-15 10:10:07,724] [INFO    ] [MainThread] [get_node]: Creating new node for ExponentialMovingAverageNodeConfig(node_config=MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=3.0)), alpha=0.06106908933829369).
+[2022-02-15 10:10:07,724] [INFO    ] [MainThread] [get_node]: Creating new node for MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=3.0)).
+[2022-02-15 10:10:07,724] [INFO    ] [MainThread] [get_node]: Creating new node for DiscretisedL2OrderBookTickNodeConfig(duration=3.0).
+[2022-02-15 10:10:07,724] [INFO    ] [MainThread] [get_node]: Creating new node for TimerNodeConfig(duration=3.0).
+[2022-02-15 10:10:07,724] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method DiscretisedL2OrderBookTickNode.handle_timer_tick of <__main__.DiscretisedL2OrderBookTickNode object at 0x000001AA6D7EDE40>> to node for TimerNodeConfig(duration=3.0).
+[2022-02-15 10:10:07,724] [INFO    ] [MainThread] [get_node]: Creating new node for L2OrderBookTickNodeConfig().
+[2022-02-15 10:10:07,724] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method DiscretisedL2OrderBookTickNode.handle_l2_order_book_tick of <__main__.DiscretisedL2OrderBookTickNode object at 0x000001AA6D7EDE40>> to node for L2OrderBookTickNodeConfig().
+[2022-02-15 10:10:07,724] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method MidpointPriceNode.handle_l2_order_book_tick of <__main__.MidpointPriceNode object at 0x000001AA6E9DECB0>> to node for DiscretisedL2OrderBookTickNodeConfig(duration=3.0).
+[2022-02-15 10:10:07,724] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method ExponentialMovingAverageNode.handle_value of <__main__.ExponentialMovingAverageNode object at 0x000001AA6D717040>> to node for MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=3.0)).
+[2022-02-15 10:10:07,724] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method MomentumIndicatorNode.handle_ema_result of <__main__.MomentumIndicatorNode object at 0x000001AA6D7ED380>> to node for ExponentialMovingAverageNodeConfig(node_config=MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=3.0)), alpha=0.06106908933829369).
+[2022-02-15 10:10:07,724] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method WindowedPairNode.handle_value of <__main__.WindowedPairNode object at 0x000001AA6D7B7440>> to node for MomentumIndicatorNodeConfig(half_life=11).
+[2022-02-15 10:10:07,724] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method MomentumSignalNode.handle_momenta of <__main__.MomentumSignalNode object at 0x000001AA6D8FABC0>> to node for WindowedPairNodeConfig(node_config=MomentumIndicatorNodeConfig(half_life=11), n=2, n2=12).
+[2022-02-15 11:03:48,444] [INFO    ] [MainThread] [__init__]: Connecting to wss://ws.testnet.bitmex.com/realtime?subscribe=instrument:XBTUSDT,orderBookL2:XBTUSDT,quote:XBTUSDT,trade:XBTUSDT,execution:XBTUSDT,order:XBTUSDT,margin,position:XBTUSDT,wallet
+[2022-02-15 11:03:48,444] [INFO    ] [MainThread] [__get_auth]: Authenticating with API Key.
+[2022-02-15 11:03:49,461] [INFO    ] [MainThread] [__init__]: Connected to WS.
+[2022-02-15 11:03:50,226] [INFO    ] [MainThread] [__init__]: Got all market data. Starting.
+[2022-02-15 11:03:50,226] [INFO    ] [MainThread] [get_node]: Creating new node for MomentumSignalNodeConfig(half_life=11, threshold=0.2).
+[2022-02-15 11:03:50,226] [INFO    ] [MainThread] [get_node]: Creating new node for WindowedPairNodeConfig(node_config=MomentumIndicatorNodeConfig(half_life=11), n=2, n2=12).
+[2022-02-15 11:03:50,226] [INFO    ] [MainThread] [get_node]: Creating new node for MomentumIndicatorNodeConfig(half_life=11).
+[2022-02-15 11:03:50,226] [INFO    ] [MainThread] [get_node]: Creating new node for ExponentialMovingAverageNodeConfig(node_config=MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=1.0)), alpha=0.06106908933829369, sma_lookback=11).
+[2022-02-15 11:03:50,226] [INFO    ] [MainThread] [get_node]: Creating new node for MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=1.0)).
+[2022-02-15 11:03:50,226] [INFO    ] [MainThread] [get_node]: Creating new node for DiscretisedL2OrderBookTickNodeConfig(duration=1.0).
+[2022-02-15 11:03:50,226] [INFO    ] [MainThread] [get_node]: Creating new node for TimerNodeConfig(duration=1.0).
+[2022-02-15 11:03:50,226] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method DiscretisedL2OrderBookTickNode.handle_timer_tick of <__main__.DiscretisedL2OrderBookTickNode object at 0x0000023FA90EA8C0>> to node for TimerNodeConfig(duration=1.0).
+[2022-02-15 11:03:50,226] [INFO    ] [MainThread] [get_node]: Creating new node for L2OrderBookTickNodeConfig().
+[2022-02-15 11:03:50,226] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method DiscretisedL2OrderBookTickNode.handle_l2_order_book_tick of <__main__.DiscretisedL2OrderBookTickNode object at 0x0000023FA90EA8C0>> to node for L2OrderBookTickNodeConfig().
+[2022-02-15 11:03:50,226] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method MidpointPriceNode.handle_l2_order_book_tick of <__main__.MidpointPriceNode object at 0x0000023FA9141000>> to node for DiscretisedL2OrderBookTickNodeConfig(duration=1.0).
+[2022-02-15 11:03:50,226] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method ExponentialMovingAverageNode.handle_value of <__main__.ExponentialMovingAverageNode object at 0x0000023FA8055AF0>> to node for MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=1.0)).
+[2022-02-15 11:03:50,226] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method MomentumIndicatorNode.handle_ema_result of <__main__.MomentumIndicatorNode object at 0x0000023FA7EEE500>> to node for ExponentialMovingAverageNodeConfig(node_config=MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=1.0)), alpha=0.06106908933829369, sma_lookback=11).
+[2022-02-15 11:03:50,226] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method WindowedPairNode.handle_value of <__main__.WindowedPairNode object at 0x0000023FA7FDB180>> to node for MomentumIndicatorNodeConfig(half_life=11).
+[2022-02-15 11:03:50,226] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method MomentumSignalNode.handle_momenta of <__main__.MomentumSignalNode object at 0x0000023FA9103E50>> to node for WindowedPairNodeConfig(node_config=MomentumIndicatorNodeConfig(half_life=11), n=2, n2=12).
+[2022-02-15 11:04:22,242] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:23,231] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:24,231] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:25,232] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:26,232] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:27,234] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:28,235] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:29,221] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:30,236] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:31,222] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:32,222] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:33,226] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:34,241] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:35,227] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:36,227] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:37,228] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:38,230] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:39,215] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:40,215] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:41,217] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:42,232] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:43,226] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:44,241] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:45,243] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:46,227] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:47,228] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:48,230] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:49,231] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:50,231] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:51,217] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:52,217] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:53,225] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:54,241] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:55,242] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:56,242] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:57,244] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #67 (from node for TimerNodeConfig(duration=1.0)) invoked 0.030999999959021807 s (> 0.02 s) late.
+[2022-02-15 11:04:57,244] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:58,214] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:04:59,215] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:00,231] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:01,232] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:02,232] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:03,224] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:23,630] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #74 (from node for TimerNodeConfig(duration=1.0)) invoked 19.405999999959022 s (> 0.02 s) late.
+[2022-02-15 11:05:23,630] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #75 (from node for TimerNodeConfig(duration=1.0)) is late by 18.405999999959022 s!
+[2022-02-15 11:05:23,645] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #75 (from node for TimerNodeConfig(duration=1.0)) invoked 18.421000000089407 s (> 0.02 s) late.
+[2022-02-15 11:05:23,645] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #76 (from node for TimerNodeConfig(duration=1.0)) is late by 17.421000000089407 s!
+[2022-02-15 11:05:23,645] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #76 (from node for TimerNodeConfig(duration=1.0)) invoked 17.421000000089407 s (> 0.02 s) late.
+[2022-02-15 11:05:23,645] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #77 (from node for TimerNodeConfig(duration=1.0)) is late by 16.421000000089407 s!
+[2022-02-15 11:05:23,645] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44321))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:23,645] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #77 (from node for TimerNodeConfig(duration=1.0)) invoked 16.421000000089407 s (> 0.02 s) late.
+[2022-02-15 11:05:23,645] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #78 (from node for TimerNodeConfig(duration=1.0)) is late by 15.421000000089407 s!
+[2022-02-15 11:05:23,645] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:23,645] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #78 (from node for TimerNodeConfig(duration=1.0)) invoked 15.421000000089407 s (> 0.02 s) late.
+[2022-02-15 11:05:23,645] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #79 (from node for TimerNodeConfig(duration=1.0)) is late by 14.421000000089407 s!
+[2022-02-15 11:05:23,645] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:23,645] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #79 (from node for TimerNodeConfig(duration=1.0)) invoked 14.421000000089407 s (> 0.02 s) late.
+[2022-02-15 11:05:23,645] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #80 (from node for TimerNodeConfig(duration=1.0)) is late by 13.421000000089407 s!
+[2022-02-15 11:05:23,645] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:23,645] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #80 (from node for TimerNodeConfig(duration=1.0)) invoked 13.421000000089407 s (> 0.02 s) late.
+[2022-02-15 11:05:23,645] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #81 (from node for TimerNodeConfig(duration=1.0)) is late by 12.421000000089407 s!
+[2022-02-15 11:05:23,645] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:23,645] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #81 (from node for TimerNodeConfig(duration=1.0)) invoked 12.421000000089407 s (> 0.02 s) late.
+[2022-02-15 11:05:23,645] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #82 (from node for TimerNodeConfig(duration=1.0)) is late by 11.421000000089407 s!
+[2022-02-15 11:05:23,645] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:23,645] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #82 (from node for TimerNodeConfig(duration=1.0)) invoked 11.421000000089407 s (> 0.02 s) late.
+[2022-02-15 11:05:23,661] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #83 (from node for TimerNodeConfig(duration=1.0)) is late by 10.436999999918044 s!
+[2022-02-15 11:05:23,661] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:23,661] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #83 (from node for TimerNodeConfig(duration=1.0)) invoked 10.436999999918044 s (> 0.02 s) late.
+[2022-02-15 11:05:23,661] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #84 (from node for TimerNodeConfig(duration=1.0)) is late by 9.436999999918044 s!
+[2022-02-15 11:05:23,661] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:23,661] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #84 (from node for TimerNodeConfig(duration=1.0)) invoked 9.436999999918044 s (> 0.02 s) late.
+[2022-02-15 11:05:23,661] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #85 (from node for TimerNodeConfig(duration=1.0)) is late by 8.436999999918044 s!
+[2022-02-15 11:05:23,661] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:23,661] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #85 (from node for TimerNodeConfig(duration=1.0)) invoked 8.436999999918044 s (> 0.02 s) late.
+[2022-02-15 11:05:23,661] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #86 (from node for TimerNodeConfig(duration=1.0)) is late by 7.436999999918044 s!
+[2022-02-15 11:05:23,661] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:23,661] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #86 (from node for TimerNodeConfig(duration=1.0)) invoked 7.436999999918044 s (> 0.02 s) late.
+[2022-02-15 11:05:23,661] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #87 (from node for TimerNodeConfig(duration=1.0)) is late by 6.436999999918044 s!
+[2022-02-15 11:05:23,661] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:23,661] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #87 (from node for TimerNodeConfig(duration=1.0)) invoked 6.436999999918044 s (> 0.02 s) late.
+[2022-02-15 11:05:23,661] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #88 (from node for TimerNodeConfig(duration=1.0)) is late by 5.436999999918044 s!
+[2022-02-15 11:05:23,677] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:23,677] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #88 (from node for TimerNodeConfig(duration=1.0)) invoked 5.452999999979511 s (> 0.02 s) late.
+[2022-02-15 11:05:23,677] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #89 (from node for TimerNodeConfig(duration=1.0)) is late by 4.452999999979511 s!
+[2022-02-15 11:05:23,677] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:23,677] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #89 (from node for TimerNodeConfig(duration=1.0)) invoked 4.452999999979511 s (> 0.02 s) late.
+[2022-02-15 11:05:23,677] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #90 (from node for TimerNodeConfig(duration=1.0)) is late by 3.452999999979511 s!
+[2022-02-15 11:05:23,677] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:23,677] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #90 (from node for TimerNodeConfig(duration=1.0)) invoked 3.452999999979511 s (> 0.02 s) late.
+[2022-02-15 11:05:23,677] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #91 (from node for TimerNodeConfig(duration=1.0)) is late by 2.452999999979511 s!
+[2022-02-15 11:05:23,677] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:23,677] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #91 (from node for TimerNodeConfig(duration=1.0)) invoked 2.452999999979511 s (> 0.02 s) late.
+[2022-02-15 11:05:23,677] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #92 (from node for TimerNodeConfig(duration=1.0)) is late by 1.452999999979511 s!
+[2022-02-15 11:05:23,677] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:23,677] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #92 (from node for TimerNodeConfig(duration=1.0)) invoked 1.452999999979511 s (> 0.02 s) late.
+[2022-02-15 11:05:23,677] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #93 (from node for TimerNodeConfig(duration=1.0)) is late by 0.4529999999795109 s!
+[2022-02-15 11:05:23,677] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:23,677] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #93 (from node for TimerNodeConfig(duration=1.0)) invoked 0.4529999999795109 s (> 0.02 s) late.
+[2022-02-15 11:05:23,692] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:23,692] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:23,692] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:24,239] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:05:25,241] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44354))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in values) / (n - 1)
+NameError: name 'values' is not defined
+[2022-02-15 11:06:41,841] [INFO    ] [MainThread] [__init__]: Connecting to wss://ws.testnet.bitmex.com/realtime?subscribe=instrument:XBTUSDT,orderBookL2:XBTUSDT,quote:XBTUSDT,trade:XBTUSDT,execution:XBTUSDT,order:XBTUSDT,margin,position:XBTUSDT,wallet
+[2022-02-15 11:06:41,841] [INFO    ] [MainThread] [__get_auth]: Authenticating with API Key.
+[2022-02-15 11:06:42,842] [INFO    ] [MainThread] [__init__]: Connected to WS.
+[2022-02-15 11:06:42,842] [INFO    ] [MainThread] [__init__]: Got all market data. Starting.
+[2022-02-15 11:06:42,842] [INFO    ] [MainThread] [get_node]: Creating new node for MomentumSignalNodeConfig(half_life=11, threshold=0.2).
+[2022-02-15 11:06:42,842] [INFO    ] [MainThread] [get_node]: Creating new node for WindowedPairNodeConfig(node_config=MomentumIndicatorNodeConfig(half_life=11), n=2, n2=12).
+[2022-02-15 11:06:42,842] [INFO    ] [MainThread] [get_node]: Creating new node for MomentumIndicatorNodeConfig(half_life=11).
+[2022-02-15 11:06:42,842] [INFO    ] [MainThread] [get_node]: Creating new node for ExponentialMovingAverageNodeConfig(node_config=MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=1.0)), alpha=0.06106908933829369, sma_lookback=11).
+[2022-02-15 11:06:42,842] [INFO    ] [MainThread] [get_node]: Creating new node for MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=1.0)).
+[2022-02-15 11:06:42,842] [INFO    ] [MainThread] [get_node]: Creating new node for DiscretisedL2OrderBookTickNodeConfig(duration=1.0).
+[2022-02-15 11:06:42,842] [INFO    ] [MainThread] [get_node]: Creating new node for TimerNodeConfig(duration=1.0).
+[2022-02-15 11:06:42,842] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method DiscretisedL2OrderBookTickNode.handle_timer_tick of <__main__.DiscretisedL2OrderBookTickNode object at 0x000001AA6B7F80C0>> to node for TimerNodeConfig(duration=1.0).
+[2022-02-15 11:06:42,842] [INFO    ] [MainThread] [get_node]: Creating new node for L2OrderBookTickNodeConfig().
+[2022-02-15 11:06:42,842] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method DiscretisedL2OrderBookTickNode.handle_l2_order_book_tick of <__main__.DiscretisedL2OrderBookTickNode object at 0x000001AA6B7F80C0>> to node for L2OrderBookTickNodeConfig().
+[2022-02-15 11:06:42,842] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method MidpointPriceNode.handle_l2_order_book_tick of <__main__.MidpointPriceNode object at 0x000001AA6B83D030>> to node for DiscretisedL2OrderBookTickNodeConfig(duration=1.0).
+[2022-02-15 11:06:42,842] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method ExponentialMovingAverageNode.handle_value of <__main__.ExponentialMovingAverageNode object at 0x000001AA6A761C40>> to node for MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=1.0)).
+[2022-02-15 11:06:42,842] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method MomentumIndicatorNode.handle_ema_result of <__main__.MomentumIndicatorNode object at 0x000001AA6A4B0300>> to node for ExponentialMovingAverageNodeConfig(node_config=MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=1.0)), alpha=0.06106908933829369, sma_lookback=11).
+[2022-02-15 11:06:42,842] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method WindowedPairNode.handle_value of <__main__.WindowedPairNode object at 0x000001AA6A60AAC0>> to node for MomentumIndicatorNodeConfig(half_life=11).
+[2022-02-15 11:06:42,842] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method MomentumSignalNode.handle_momenta of <__main__.MomentumSignalNode object at 0x000001AA6A4BDF60>> to node for WindowedPairNodeConfig(node_config=MomentumIndicatorNodeConfig(half_life=11), n=2, n2=12).
+[2022-02-15 11:07:02,864] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #20 (from node for TimerNodeConfig(duration=1.0)) invoked 0.030999999959021807 s (> 0.02 s) late.
+[2022-02-15 11:07:14,848] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:15,849] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:16,849] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:17,850] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:18,852] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:19,851] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:20,848] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:21,839] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:22,840] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:23,843] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:24,858] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:25,860] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:26,860] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:27,861] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:28,863] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:44,131] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #47 (from node for TimerNodeConfig(duration=1.0)) invoked 14.296000000089407 s (> 0.02 s) late.
+[2022-02-15 11:07:44,131] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #48 (from node for TimerNodeConfig(duration=1.0)) is late by 13.296000000089407 s!
+[2022-02-15 11:07:44,131] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #48 (from node for TimerNodeConfig(duration=1.0)) invoked 13.296000000089407 s (> 0.02 s) late.
+[2022-02-15 11:07:44,131] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #49 (from node for TimerNodeConfig(duration=1.0)) is late by 12.296000000089407 s!
+[2022-02-15 11:07:44,131] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #49 (from node for TimerNodeConfig(duration=1.0)) invoked 12.296000000089407 s (> 0.02 s) late.
+[2022-02-15 11:07:44,131] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #50 (from node for TimerNodeConfig(duration=1.0)) is late by 11.296000000089407 s!
+[2022-02-15 11:07:44,131] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:44,131] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #50 (from node for TimerNodeConfig(duration=1.0)) invoked 11.296000000089407 s (> 0.02 s) late.
+[2022-02-15 11:07:44,147] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #51 (from node for TimerNodeConfig(duration=1.0)) is late by 10.311999999918044 s!
+[2022-02-15 11:07:44,147] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:44,147] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #51 (from node for TimerNodeConfig(duration=1.0)) invoked 10.311999999918044 s (> 0.02 s) late.
+[2022-02-15 11:07:44,147] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #52 (from node for TimerNodeConfig(duration=1.0)) is late by 9.311999999918044 s!
+[2022-02-15 11:07:44,147] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:44,147] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #52 (from node for TimerNodeConfig(duration=1.0)) invoked 9.311999999918044 s (> 0.02 s) late.
+[2022-02-15 11:07:44,147] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #53 (from node for TimerNodeConfig(duration=1.0)) is late by 8.311999999918044 s!
+[2022-02-15 11:07:44,147] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:44,147] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #53 (from node for TimerNodeConfig(duration=1.0)) invoked 8.311999999918044 s (> 0.02 s) late.
+[2022-02-15 11:07:44,147] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #54 (from node for TimerNodeConfig(duration=1.0)) is late by 7.311999999918044 s!
+[2022-02-15 11:07:44,147] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:44,147] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #54 (from node for TimerNodeConfig(duration=1.0)) invoked 7.311999999918044 s (> 0.02 s) late.
+[2022-02-15 11:07:44,147] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #55 (from node for TimerNodeConfig(duration=1.0)) is late by 6.311999999918044 s!
+[2022-02-15 11:07:44,147] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:44,147] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #55 (from node for TimerNodeConfig(duration=1.0)) invoked 6.311999999918044 s (> 0.02 s) late.
+[2022-02-15 11:07:44,147] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #56 (from node for TimerNodeConfig(duration=1.0)) is late by 5.311999999918044 s!
+[2022-02-15 11:07:44,147] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:44,147] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #56 (from node for TimerNodeConfig(duration=1.0)) invoked 5.311999999918044 s (> 0.02 s) late.
+[2022-02-15 11:07:44,162] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #57 (from node for TimerNodeConfig(duration=1.0)) is late by 4.327999999979511 s!
+[2022-02-15 11:07:44,162] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:44,162] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #57 (from node for TimerNodeConfig(duration=1.0)) invoked 4.327999999979511 s (> 0.02 s) late.
+[2022-02-15 11:07:44,162] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #58 (from node for TimerNodeConfig(duration=1.0)) is late by 3.327999999979511 s!
+[2022-02-15 11:07:44,162] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:44,162] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #58 (from node for TimerNodeConfig(duration=1.0)) invoked 3.327999999979511 s (> 0.02 s) late.
+[2022-02-15 11:07:44,162] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #59 (from node for TimerNodeConfig(duration=1.0)) is late by 2.327999999979511 s!
+[2022-02-15 11:07:44,162] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:44,162] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #59 (from node for TimerNodeConfig(duration=1.0)) invoked 2.327999999979511 s (> 0.02 s) late.
+[2022-02-15 11:07:44,162] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #60 (from node for TimerNodeConfig(duration=1.0)) is late by 1.327999999979511 s!
+[2022-02-15 11:07:44,162] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:44,162] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #60 (from node for TimerNodeConfig(duration=1.0)) invoked 1.327999999979511 s (> 0.02 s) late.
+[2022-02-15 11:07:44,162] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #61 (from node for TimerNodeConfig(duration=1.0)) is late by 0.3279999999795109 s!
+[2022-02-15 11:07:44,162] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:44,162] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #61 (from node for TimerNodeConfig(duration=1.0)) invoked 0.3279999999795109 s (> 0.02 s) late.
+[2022-02-15 11:07:44,162] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:44,178] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:44,178] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:44,850] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:45,851] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:46,851] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:47,853] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:48,854] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:49,840] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:50,855] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:51,857] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:52,842] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:53,847] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:54,847] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:55,833] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:56,848] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:57,850] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:58,851] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:07:59,852] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:00,852] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:01,854] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:02,839] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:03,842] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:04,842] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:05,843] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:06,859] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:07,860] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:08,862] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:09,863] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #87 (from node for TimerNodeConfig(duration=1.0)) invoked 0.030999999959021807 s (> 0.02 s) late.
+[2022-02-15 11:08:09,863] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (n - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:10,847] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (self.config.sma_lookback - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:11,849] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (self.config.sma_lookback - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:12,850] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (self.config.sma_lookback - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:13,837] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (self.config.sma_lookback - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:14,853] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (self.config.sma_lookback - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:15,854] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (self.config.sma_lookback - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:16,854] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (self.config.sma_lookback - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:17,840] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (self.config.sma_lookback - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:18,841] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (self.config.sma_lookback - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:19,842] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))
+handle: <Handle ExponentialMovingAverageNode.handle_value(HackyMcHackfa...est_ask=44200))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 336, in handle_value
+    sma_variance = sum((value - sma_mean) ** 2 for value in self.values) / (self.config.sma_lookback - 1)
+NameError: name 'n' is not defined
+[2022-02-15 11:08:32,128] [INFO    ] [MainThread] [__init__]: Connecting to wss://ws.testnet.bitmex.com/realtime?subscribe=instrument:XBTUSDT,orderBookL2:XBTUSDT,quote:XBTUSDT,trade:XBTUSDT,execution:XBTUSDT,order:XBTUSDT,margin,position:XBTUSDT,wallet
+[2022-02-15 11:08:32,128] [INFO    ] [MainThread] [__get_auth]: Authenticating with API Key.
+[2022-02-15 11:08:33,131] [INFO    ] [MainThread] [__init__]: Connected to WS.
+[2022-02-15 11:08:35,330] [INFO    ] [MainThread] [__init__]: Got all market data. Starting.
+[2022-02-15 11:08:35,330] [INFO    ] [MainThread] [get_node]: Creating new node for MomentumSignalNodeConfig(half_life=11, threshold=0.2).
+[2022-02-15 11:08:35,330] [INFO    ] [MainThread] [get_node]: Creating new node for WindowedPairNodeConfig(node_config=MomentumIndicatorNodeConfig(half_life=11), n=2, n2=12).
+[2022-02-15 11:08:35,330] [INFO    ] [MainThread] [get_node]: Creating new node for MomentumIndicatorNodeConfig(half_life=11).
+[2022-02-15 11:08:35,330] [INFO    ] [MainThread] [get_node]: Creating new node for ExponentialMovingAverageNodeConfig(node_config=MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=1.0)), alpha=0.06106908933829369, sma_lookback=11).
+[2022-02-15 11:08:35,330] [INFO    ] [MainThread] [get_node]: Creating new node for MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=1.0)).
+[2022-02-15 11:08:35,330] [INFO    ] [MainThread] [get_node]: Creating new node for DiscretisedL2OrderBookTickNodeConfig(duration=1.0).
+[2022-02-15 11:08:35,330] [INFO    ] [MainThread] [get_node]: Creating new node for TimerNodeConfig(duration=1.0).
+[2022-02-15 11:08:35,330] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method DiscretisedL2OrderBookTickNode.handle_timer_tick of <__main__.DiscretisedL2OrderBookTickNode object at 0x00000284C2A37D00>> to node for TimerNodeConfig(duration=1.0).
+[2022-02-15 11:08:35,330] [INFO    ] [MainThread] [get_node]: Creating new node for L2OrderBookTickNodeConfig().
+[2022-02-15 11:08:35,330] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method DiscretisedL2OrderBookTickNode.handle_l2_order_book_tick of <__main__.DiscretisedL2OrderBookTickNode object at 0x00000284C2A37D00>> to node for L2OrderBookTickNodeConfig().
+[2022-02-15 11:08:35,330] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method MidpointPriceNode.handle_l2_order_book_tick of <__main__.MidpointPriceNode object at 0x00000284C3C41000>> to node for DiscretisedL2OrderBookTickNodeConfig(duration=1.0).
+[2022-02-15 11:08:35,330] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method ExponentialMovingAverageNode.handle_value of <__main__.ExponentialMovingAverageNode object at 0x00000284C2B66730>> to node for MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=1.0)).
+[2022-02-15 11:08:35,330] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method MomentumIndicatorNode.handle_ema_result of <__main__.MomentumIndicatorNode object at 0x00000284C2A358C0>> to node for ExponentialMovingAverageNodeConfig(node_config=MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=1.0)), alpha=0.06106908933829369, sma_lookback=11).
+[2022-02-15 11:08:35,330] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method WindowedPairNode.handle_value of <__main__.WindowedPairNode object at 0x00000284B0A1E080>> to node for MomentumIndicatorNodeConfig(half_life=11).
+[2022-02-15 11:08:35,330] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method MomentumSignalNode.handle_momenta of <__main__.MomentumSignalNode object at 0x00000284C2B3BD60>> to node for WindowedPairNodeConfig(node_config=MomentumIndicatorNodeConfig(half_life=11), n=2, n2=12).
+[2022-02-15 11:09:16,358] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback MomentumIndicatorNode.handle_ema_result(ExponentialMo...4.77840909091))
+handle: <Handle MomentumIndicatorNode.handle_ema_result(ExponentialMo...4.77840909091))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 590, in handle_ema_result
+    significance = abs(math.sqrt((current_momentum.midpoint_price - ema_result.sma_mean) / (ema_result.sma_variance))) if ema_result.sma_variance != 0 else 0
+NameError: name 'current_momentum' is not defined
+[2022-02-15 11:09:17,344] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback MomentumIndicatorNode.handle_ema_result(ExponentialMo....017045454545))
+handle: <Handle MomentumIndicatorNode.handle_ema_result(ExponentialMo....017045454545))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 590, in handle_ema_result
+    significance = abs(math.sqrt((current_momentum.midpoint_price - ema_result.sma_mean) / (ema_result.sma_variance))) if ema_result.sma_variance != 0 else 0
+NameError: name 'current_momentum' is not defined
+[2022-02-15 11:09:18,345] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback MomentumIndicatorNode.handle_ema_result(ExponentialMo....142045454545))
+handle: <Handle MomentumIndicatorNode.handle_ema_result(ExponentialMo....142045454545))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 590, in handle_ema_result
+    significance = abs(math.sqrt((current_momentum.midpoint_price - ema_result.sma_mean) / (ema_result.sma_variance))) if ema_result.sma_variance != 0 else 0
+NameError: name 'current_momentum' is not defined
+[2022-02-15 11:09:19,345] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback MomentumIndicatorNode.handle_ema_result(ExponentialMo...5.15340909091))
+handle: <Handle MomentumIndicatorNode.handle_ema_result(ExponentialMo...5.15340909091))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 590, in handle_ema_result
+    significance = abs(math.sqrt((current_momentum.midpoint_price - ema_result.sma_mean) / (ema_result.sma_variance))) if ema_result.sma_variance != 0 else 0
+NameError: name 'current_momentum' is not defined
+[2022-02-15 11:09:20,346] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback MomentumIndicatorNode.handle_ema_result(ExponentialMo....051136363637))
+handle: <Handle MomentumIndicatorNode.handle_ema_result(ExponentialMo....051136363637))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 590, in handle_ema_result
+    significance = abs(math.sqrt((current_momentum.midpoint_price - ema_result.sma_mean) / (ema_result.sma_variance))) if ema_result.sma_variance != 0 else 0
+NameError: name 'current_momentum' is not defined
+[2022-02-15 11:09:21,346] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback MomentumIndicatorNode.handle_ema_result(ExponentialMo....835227272728))
+handle: <Handle MomentumIndicatorNode.handle_ema_result(ExponentialMo....835227272728))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 590, in handle_ema_result
+    significance = abs(math.sqrt((current_momentum.midpoint_price - ema_result.sma_mean) / (ema_result.sma_variance))) if ema_result.sma_variance != 0 else 0
+NameError: name 'current_momentum' is not defined
+[2022-02-15 11:09:22,348] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback MomentumIndicatorNode.handle_ema_result(ExponentialMo....505681818182))
+handle: <Handle MomentumIndicatorNode.handle_ema_result(ExponentialMo....505681818182))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 590, in handle_ema_result
+    significance = abs(math.sqrt((current_momentum.midpoint_price - ema_result.sma_mean) / (ema_result.sma_variance))) if ema_result.sma_variance != 0 else 0
+NameError: name 'current_momentum' is not defined
+[2022-02-15 11:09:23,341] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback MomentumIndicatorNode.handle_ema_result(ExponentialMo...nce=4624.0625))
+handle: <Handle MomentumIndicatorNode.handle_ema_result(ExponentialMo...nce=4624.0625))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 590, in handle_ema_result
+    significance = abs(math.sqrt((current_momentum.midpoint_price - ema_result.sma_mean) / (ema_result.sma_variance))) if ema_result.sma_variance != 0 else 0
+NameError: name 'current_momentum' is not defined
+[2022-02-15 11:09:26,610] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #49 (from node for TimerNodeConfig(duration=1.0)) invoked 2.280999999959022 s (> 0.02 s) late.
+[2022-02-15 11:09:26,610] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #50 (from node for TimerNodeConfig(duration=1.0)) is late by 1.2809999999590218 s!
+[2022-02-15 11:09:26,626] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #50 (from node for TimerNodeConfig(duration=1.0)) invoked 1.296000000089407 s (> 0.02 s) late.
+[2022-02-15 11:09:26,626] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #51 (from node for TimerNodeConfig(duration=1.0)) is late by 0.29600000008940697 s!
+[2022-02-15 11:09:26,626] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #51 (from node for TimerNodeConfig(duration=1.0)) invoked 0.29600000008940697 s (> 0.02 s) late.
+[2022-02-15 11:09:26,626] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback MomentumIndicatorNode.handle_ema_result(ExponentialMo....505681818182))
+handle: <Handle MomentumIndicatorNode.handle_ema_result(ExponentialMo....505681818182))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 590, in handle_ema_result
+    significance = abs(math.sqrt((current_momentum.midpoint_price - ema_result.sma_mean) / (ema_result.sma_variance))) if ema_result.sma_variance != 0 else 0
+NameError: name 'current_momentum' is not defined
+[2022-02-15 11:09:26,626] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback MomentumIndicatorNode.handle_ema_result(ExponentialMo....835227272728))
+handle: <Handle MomentumIndicatorNode.handle_ema_result(ExponentialMo....835227272728))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 590, in handle_ema_result
+    significance = abs(math.sqrt((current_momentum.midpoint_price - ema_result.sma_mean) / (ema_result.sma_variance))) if ema_result.sma_variance != 0 else 0
+NameError: name 'current_momentum' is not defined
+[2022-02-15 11:09:26,626] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback MomentumIndicatorNode.handle_ema_result(ExponentialMo....051136363638))
+handle: <Handle MomentumIndicatorNode.handle_ema_result(ExponentialMo....051136363638))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 590, in handle_ema_result
+    significance = abs(math.sqrt((current_momentum.midpoint_price - ema_result.sma_mean) / (ema_result.sma_variance))) if ema_result.sma_variance != 0 else 0
+NameError: name 'current_momentum' is not defined
+[2022-02-15 11:09:32,664] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44034.5, -1000, 0). Past is (44034.5, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:09:32,664] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #55 (from node for TimerNodeConfig(duration=1.0)) invoked 2.327999999979511 s (> 0.02 s) late.
+[2022-02-15 11:09:32,664] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #56 (from node for TimerNodeConfig(duration=1.0)) is late by 1.327999999979511 s!
+[2022-02-15 11:09:32,664] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #56 (from node for TimerNodeConfig(duration=1.0)) invoked 1.327999999979511 s (> 0.02 s) late.
+[2022-02-15 11:09:32,664] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #57 (from node for TimerNodeConfig(duration=1.0)) is late by 0.3279999999795109 s!
+[2022-02-15 11:09:32,664] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #57 (from node for TimerNodeConfig(duration=1.0)) invoked 0.3279999999795109 s (> 0.02 s) late.
+[2022-02-15 11:09:32,929] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44034.5, -1000, 0). Past is (44034.5, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:09:33,463] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44034.5, -1000, 0). Past is (44034.5, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:09:33,745] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44034.5, -1000, 0). Past is (44034.5, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:09:33,745] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #58 (from node for TimerNodeConfig(duration=1.0)) invoked 0.4059999999590218 s (> 0.02 s) late.
+[2022-02-15 11:09:33,995] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44034.5, -1000, 0). Past is (44034.5, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:09:34,604] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44034.5, -1000, 0). Past is (44034.5, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:09:35,621] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44034.5, -1000, 0). Past is (44034.5, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:09:36,918] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #61 (from node for TimerNodeConfig(duration=1.0)) invoked 0.5779999999795109 s (> 0.02 s) late.
+[2022-02-15 11:09:37,183] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44034.5, -1000, 0). Past is (44034.5, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:09:37,591] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44034.5, -1000, 0). Past is (44034.5, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:09:38,624] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44034.5, -1000, 0). Past is (44034.5, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:09:39,609] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44034.5, -1000, 0). Past is (44034.5, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:09:40,594] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44034.5, -1000, 0). Past is (44034.5, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:12:29,635] [INFO    ] [MainThread] [__init__]: Connecting to wss://ws.testnet.bitmex.com/realtime?subscribe=instrument:XBTUSDT,orderBookL2:XBTUSDT,quote:XBTUSDT,trade:XBTUSDT,execution:XBTUSDT,order:XBTUSDT,margin,position:XBTUSDT,wallet
+[2022-02-15 11:12:29,635] [INFO    ] [MainThread] [__get_auth]: Authenticating with API Key.
+[2022-02-15 11:12:30,634] [INFO    ] [MainThread] [__init__]: Connected to WS.
+[2022-02-15 11:12:32,715] [INFO    ] [MainThread] [__init__]: Got all market data. Starting.
+[2022-02-15 11:12:32,715] [INFO    ] [MainThread] [get_node]: Creating new node for MomentumSignalNodeConfig(half_life=11, threshold=0.2).
+[2022-02-15 11:12:32,715] [INFO    ] [MainThread] [get_node]: Creating new node for WindowedPairNodeConfig(node_config=MomentumIndicatorNodeConfig(half_life=11), n=2, n2=12).
+[2022-02-15 11:12:32,715] [INFO    ] [MainThread] [get_node]: Creating new node for MomentumIndicatorNodeConfig(half_life=11).
+[2022-02-15 11:12:32,715] [INFO    ] [MainThread] [get_node]: Creating new node for ExponentialMovingAverageNodeConfig(node_config=MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=1.0)), alpha=0.06106908933829369, sma_lookback=11).
+[2022-02-15 11:12:32,715] [INFO    ] [MainThread] [get_node]: Creating new node for MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=1.0)).
+[2022-02-15 11:12:32,715] [INFO    ] [MainThread] [get_node]: Creating new node for DiscretisedL2OrderBookTickNodeConfig(duration=1.0).
+[2022-02-15 11:12:32,715] [INFO    ] [MainThread] [get_node]: Creating new node for TimerNodeConfig(duration=1.0).
+[2022-02-15 11:12:32,715] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method DiscretisedL2OrderBookTickNode.handle_timer_tick of <__main__.DiscretisedL2OrderBookTickNode object at 0x000001B590FBB180>> to node for TimerNodeConfig(duration=1.0).
+[2022-02-15 11:12:32,715] [INFO    ] [MainThread] [get_node]: Creating new node for L2OrderBookTickNodeConfig().
+[2022-02-15 11:12:32,715] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method DiscretisedL2OrderBookTickNode.handle_l2_order_book_tick of <__main__.DiscretisedL2OrderBookTickNode object at 0x000001B590FBB180>> to node for L2OrderBookTickNodeConfig().
+[2022-02-15 11:12:32,715] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method MidpointPriceNode.handle_l2_order_book_tick of <__main__.MidpointPriceNode object at 0x000001B592135000>> to node for DiscretisedL2OrderBookTickNodeConfig(duration=1.0).
+[2022-02-15 11:12:32,715] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method ExponentialMovingAverageNode.handle_value of <__main__.ExponentialMovingAverageNode object at 0x000001B5910469D0>> to node for MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=1.0)).
+[2022-02-15 11:12:32,715] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method MomentumIndicatorNode.handle_ema_result of <__main__.MomentumIndicatorNode object at 0x000001B590FB8E80>> to node for ExponentialMovingAverageNodeConfig(node_config=MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=1.0)), alpha=0.06106908933829369, sma_lookback=11).
+[2022-02-15 11:12:32,715] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method WindowedPairNode.handle_value of <__main__.WindowedPairNode object at 0x000001B590FB9D80>> to node for MomentumIndicatorNodeConfig(half_life=11).
+[2022-02-15 11:12:32,715] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method MomentumSignalNode.handle_momenta of <__main__.MomentumSignalNode object at 0x000001B59101BDF0>> to node for WindowedPairNodeConfig(node_config=MomentumIndicatorNodeConfig(half_life=11), n=2, n2=12).
+[2022-02-15 11:13:15,717] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback MomentumIndicatorNode.handle_ema_result(ExponentialMo....505681818184))
+handle: <Handle MomentumIndicatorNode.handle_ema_result(ExponentialMo....505681818184))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 590, in handle_ema_result
+    significance = abs(math.sqrt((ema_result.current_value - ema_result.sma_mean) / (ema_result.sma_variance))) if ema_result.sma_variance != 0 else 0
+ValueError: math domain error
+[2022-02-15 11:13:16,983] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0.041440865500194456). Past is (44179.5, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:17,969] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0.041279018480366504). Past is (44183.75, -1000, 0.041440865500194456).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:18,986] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0.041117181770797255). Past is (44183.75, -1000, 0.041279018480366504).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:19,971] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0.04095534824055124). Past is (44183.75, -1000, 0.041117181770797255).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:20,987] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0.04079351072178075). Past is (44183.75, -1000, 0.04095534824055124).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:21,973] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0.04063166200777175). Past is (44183.75, -1000, 0.04079351072178075).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:22,974] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0.0404697948509912). Past is (44183.75, -1000, 0.04063166200777175).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:23,977] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0.040307901961053536). Past is (44183.75, -1000, 0.0404697948509912).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:24,961] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0.040145976002685). Past is (44183.75, -1000, 0.040307901961053536).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:25,963] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0.039984009593605645). Past is (44183.75, -1000, 0.040145976002685).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:26,978] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0.039984009593605645).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:27,964] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:28,994] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:29,970] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:30,959] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:32,320] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:32,993] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:33,980] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:34,980] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:35,966] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:36,966] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:37,967] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:38,968] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:40,704] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:40,970] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:42,002] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:42,988] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:43,960] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:44,991] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:45,977] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:46,977] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:47,978] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:48,964] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:49,965] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:50,965] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:51,951] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:52,983] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:53,973] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:54,988] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:55,974] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:56,990] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:57,960] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:58,977] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:13:59,994] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:14:00,962] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:14:01,979] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:14:02,996] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:14:04,171] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:14:04,968] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:14:05,969] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:14:07,000] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:14:07,970] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:14:08,987] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:14:13,352] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #97 (from node for TimerNodeConfig(duration=1.0)) invoked 3.625 s (> 0.02 s) late.
+[2022-02-15 11:14:13,352] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #98 (from node for TimerNodeConfig(duration=1.0)) is late by 2.625 s!
+[2022-02-15 11:14:13,352] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #98 (from node for TimerNodeConfig(duration=1.0)) invoked 2.625 s (> 0.02 s) late.
+[2022-02-15 11:14:13,352] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #99 (from node for TimerNodeConfig(duration=1.0)) is late by 1.625 s!
+[2022-02-15 11:14:13,352] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #99 (from node for TimerNodeConfig(duration=1.0)) invoked 1.625 s (> 0.02 s) late.
+[2022-02-15 11:14:13,352] [WARNING ] [MainThread] [schedule_next_tick]: Next tick #100 (from node for TimerNodeConfig(duration=1.0)) is late by 0.625 s!
+[2022-02-15 11:14:13,352] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #100 (from node for TimerNodeConfig(duration=1.0)) invoked 0.625 s (> 0.02 s) late.
+[2022-02-15 11:14:13,618] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:14:14,244] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:14:14,494] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:14:14,494] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #101 (from node for TimerNodeConfig(duration=1.0)) invoked 0.7810000001918525 s (> 0.02 s) late.
+[2022-02-15 11:14:14,775] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:14:14,775] [WARNING ] [MainThread] [handle_tick]: Scheduled tick #102 (from node for TimerNodeConfig(duration=1.0)) invoked 0.06300000008195639 s (> 0.02 s) late.
+[2022-02-15 11:14:15,025] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:14:15,322] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44183.75, -1000, 0). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:14:15,713] [ERROR   ] [MainThread] [default_exception_handler]: Exception in callback MomentumIndicatorNode.handle_ema_result(ExponentialMo....505681818184))
+handle: <Handle MomentumIndicatorNode.handle_ema_result(ExponentialMo....505681818184))>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Administrator\Desktop\cryptoapi\MeanReversion.py", line 590, in handle_ema_result
+    significance = abs(math.sqrt((ema_result.current_value - ema_result.sma_mean) / (ema_result.sma_variance))) if ema_result.sma_variance != 0 else 0
+ValueError: math domain error
+[2022-02-15 11:14:16,948] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44179.25, -1000, 0.04051428565160653). Past is (44183.75, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:14:17,996] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44179.25, -1000, 0.04072214227515904). Past is (44179.25, -1000, 0.04051428565160653).]: Cancel orders due to non-exection.
+[2022-02-15 11:14:18,967] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44179.25, -1000, 0.040929850991935926). Past is (44179.25, -1000, 0.04072214227515904).]: Cancel orders due to non-exection.
+[2022-02-15 11:14:19,968] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44179.25, -1000, 0.041137426309718166). Past is (44179.25, -1000, 0.040929850991935926).]: Cancel orders due to non-exection.
+[2022-02-15 11:16:47,967] [INFO    ] [MainThread] [__init__]: Connecting to wss://ws.testnet.bitmex.com/realtime?subscribe=instrument:XBTUSDT,orderBookL2:XBTUSDT,quote:XBTUSDT,trade:XBTUSDT,execution:XBTUSDT,order:XBTUSDT,margin,position:XBTUSDT,wallet
+[2022-02-15 11:16:47,967] [INFO    ] [MainThread] [__get_auth]: Authenticating with API Key.
+[2022-02-15 11:16:48,969] [INFO    ] [MainThread] [__init__]: Connected to WS.
+[2022-02-15 11:16:50,173] [INFO    ] [MainThread] [__init__]: Got all market data. Starting.
+[2022-02-15 11:16:50,173] [INFO    ] [MainThread] [get_node]: Creating new node for MomentumSignalNodeConfig(half_life=11, threshold=0.2).
+[2022-02-15 11:16:50,173] [INFO    ] [MainThread] [get_node]: Creating new node for WindowedPairNodeConfig(node_config=MomentumIndicatorNodeConfig(half_life=11), n=2, n2=12).
+[2022-02-15 11:16:50,173] [INFO    ] [MainThread] [get_node]: Creating new node for MomentumIndicatorNodeConfig(half_life=11).
+[2022-02-15 11:16:50,173] [INFO    ] [MainThread] [get_node]: Creating new node for ExponentialMovingAverageNodeConfig(node_config=MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=1.0)), alpha=0.06106908933829369, sma_lookback=11).
+[2022-02-15 11:16:50,173] [INFO    ] [MainThread] [get_node]: Creating new node for MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=1.0)).
+[2022-02-15 11:16:50,173] [INFO    ] [MainThread] [get_node]: Creating new node for DiscretisedL2OrderBookTickNodeConfig(duration=1.0).
+[2022-02-15 11:16:50,173] [INFO    ] [MainThread] [get_node]: Creating new node for TimerNodeConfig(duration=1.0).
+[2022-02-15 11:16:50,173] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method DiscretisedL2OrderBookTickNode.handle_timer_tick of <__main__.DiscretisedL2OrderBookTickNode object at 0x0000022123E42D40>> to node for TimerNodeConfig(duration=1.0).
+[2022-02-15 11:16:50,173] [INFO    ] [MainThread] [get_node]: Creating new node for L2OrderBookTickNodeConfig().
+[2022-02-15 11:16:50,173] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method DiscretisedL2OrderBookTickNode.handle_l2_order_book_tick of <__main__.DiscretisedL2OrderBookTickNode object at 0x0000022123E42D40>> to node for L2OrderBookTickNodeConfig().
+[2022-02-15 11:16:50,173] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method MidpointPriceNode.handle_l2_order_book_tick of <__main__.MidpointPriceNode object at 0x0000022125061000>> to node for DiscretisedL2OrderBookTickNodeConfig(duration=1.0).
+[2022-02-15 11:16:50,173] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method ExponentialMovingAverageNode.handle_value of <__main__.ExponentialMovingAverageNode object at 0x0000022123F866C0>> to node for MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=1.0)).
+[2022-02-15 11:16:50,173] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method MomentumIndicatorNode.handle_ema_result of <__main__.MomentumIndicatorNode object at 0x0000022123E43CC0>> to node for ExponentialMovingAverageNodeConfig(node_config=MidpointPriceNodeConfig(l2_order_book_tick_node_config=DiscretisedL2OrderBookTickNodeConfig(duration=1.0)), alpha=0.06106908933829369, sma_lookback=11).
+[2022-02-15 11:16:50,173] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method WindowedPairNode.handle_value of <__main__.WindowedPairNode object at 0x0000022114A0E480>> to node for MomentumIndicatorNodeConfig(half_life=11).
+[2022-02-15 11:16:50,173] [INFO    ] [MainThread] [subscribe_node_result]: Subscribing <bound method MomentumSignalNode.handle_momenta of <__main__.MomentumSignalNode object at 0x0000022123F5BE20>> to node for WindowedPairNodeConfig(node_config=MomentumIndicatorNodeConfig(half_life=11), n=2, n2=12).
+[2022-02-15 11:17:33,441] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:34,412] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:35,694] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:36,434] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:37,434] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:39,047] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:39,672] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:40,471] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:41,471] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:42,771] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:43,413] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:44,429] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:45,789] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:46,415] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:47,446] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:48,433] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:49,449] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:50,419] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:51,435] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:52,420] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:53,470] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:54,489] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:55,473] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:56,412] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:57,428] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:58,719] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:17:59,438] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:00,424] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:01,502] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:02,410] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:03,412] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:04,413] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:05,398] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:06,415] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:07,430] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:08,424] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:09,455] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:10,472] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:11,425] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:12,411] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:13,460] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:14,415] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:15,399] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44184.0, -1000, 0). Past is (44184.0, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:16,307] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (43622.5, -1000, 3.0151134457776285). Past is (44184.0, -1000, 0).]: No signal (due to insufficient significance).
+[2022-02-15 11:18:17,463] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44187.25, -1000, 0.3187732339192501). Past is (43622.5, -1000, 3.0151134457776285).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:18,422] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44187.25, -1000, 0.3168417468518268). Past is (44187.25, -1000, 0.3187732339192501).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:19,453] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44187.25, -1000, 0.31491370250089906). Past is (44187.25, -1000, 0.3168417468518268).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:20,439] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44187.25, -1000, 0.3129890714637576). Past is (44187.25, -1000, 0.31491370250089906).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:21,814] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44187.25, -1000, 0.3110678245488572). Past is (44187.25, -1000, 0.3129890714637576).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:22,424] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44187.25, -1000, 0.30914993277351016). Past is (44187.25, -1000, 0.3110678245488572).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:23,755] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44187.25, -1000, 0.30723536736118395). Past is (44187.25, -1000, 0.30914993277351016).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:24,413] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44187.25, -1000, 0.30532409973904606). Past is (44187.25, -1000, 0.30723536736118395).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:25,475] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44187.25, -1000, 0.30341610153549703). Past is (44187.25, -1000, 0.30532409973904606).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:26,774] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44187.25, -1000, 0.3015113445777791). Past is (44187.25, -1000, 0.30341610153549703).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:27,445] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44187.25, -1000, 0). Past is (44187.25, -1000, 0.3015113445777791).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:28,468] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44187.25, -1000, 0). Past is (44187.25, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:29,468] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44187.25, -1000, 0). Past is (44187.25, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:30,438] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44187.25, -1000, 0). Past is (44187.25, -1000, 0).]: Cancel orders due to non-exection.
+[2022-02-15 11:18:31,485] [INFO    ] [MainThread] [handle_momenta]: [Current (MPP, momentum, significance) is (44187.25, -1000, 0). Past is (44187.25, -1000, 0).]: Cancel orders due to non-exection.
