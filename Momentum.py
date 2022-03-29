@@ -6,7 +6,7 @@
 
 import argparse
 import asyncio
-from collections import defaultdict, deque
+from collections import defaultdict, deque, OrderedDict
 from dataclasses import dataclass
 from enum import IntEnum
 from getpass import getpass
@@ -546,7 +546,7 @@ class BitmexWebsocketEx(BitMEXWebsocket):
 
 @dataclass(frozen=True)
 class MomentumIndicatorResult:
-    __slots__ = ('midpoint_price', 'best_bid', 'best_ask', 'momentum', 'significance', 'sma_variance', 'upper', 'lower', 'upper1', 'lower1')
+    __slots__ = ('midpoint_price', 'best_bid', 'best_ask', 'momentum', 'significance', 'sma_variance')
 
     midpoint_price: float
     best_bid: Optional[float]
@@ -554,20 +554,20 @@ class MomentumIndicatorResult:
     momentum: float
     significance: float
     sma_variance: float
-    upper: float
-    lower: float
-    upper1: float
-    lower1: float
+    
 
 
 @dataclass(frozen=True)
 class MomentumIndicatorNodeConfig:
-    __slots__ = ('half_life',)
+    __slots__ = ('half_life')
 
     half_life: int
 
+   
+
     def __post_init__(self) -> None:
         assert_positive_integer(self.half_life)
+
 
 
 class MomentumIndicatorNode(Node[MomentumIndicatorNodeConfig, MomentumIndicatorResult]):
@@ -576,27 +576,24 @@ class MomentumIndicatorNode(Node[MomentumIndicatorNodeConfig, MomentumIndicatorR
     def __init__(self, engine: 'Engine', config: MomentumIndicatorNodeConfig) -> None:
         super().__init__(engine, config)
         self.magic_constant = 2 * math.log(2) / config.half_life
-        l2_order_book_tick_node_config = DiscretisedL2OrderBookTickNodeConfig(duration=60.)
+        l2_order_book_tick_node_config = DiscretisedL2OrderBookTickNodeConfig(duration=300.)
         mpp_node_config = MidpointPriceNodeConfig(l2_order_book_tick_node_config=l2_order_book_tick_node_config)
-        alpha = 2/ (config.half_life+1)
+        alpha = 2 / (config.half_life + 1)
         ema_node_config = ExponentialMovingAverageNodeConfig(node_config=mpp_node_config, alpha=alpha, sma_lookback=config.half_life)
         engine.subscribe_node_result(ema_node_config, self.handle_ema_result)
 
     def handle_ema_result(self, ema_result: ExponentialMovingAverageResult) -> None:
-        upper = ema_result.sma_mean + Multiplier* math.sqrt(ema_result.sma_variance)
-        lower = ema_result.sma_mean - Multiplier* math.sqrt(ema_result.sma_variance)
-        upper1 = ema_result.sma_mean + 1.9* math.sqrt(ema_result.sma_variance)
-        lower1 = ema_result.sma_mean - 1.9* math.sqrt(ema_result.sma_variance)
+        momentum = 10000
         significance = abs((ema_result.current_value - ema_result.sma_mean) / math.sqrt(ema_result.sma_variance)) if ema_result.sma_variance != 0 else 0
         sma_variance = ema_result.sma_variance
-        self.publish_result(MomentumIndicatorResult(midpoint_price=ema_result.current_value, best_bid=ema_result.best_bid, best_ask=ema_result.best_ask, momentum=-1000, 
-            significance=significance, sma_variance=sma_variance, upper=upper, lower=lower, upper1=upper1, lower1=lower1))
+        self.publish_result(MomentumIndicatorResult(midpoint_price=ema_result.current_value, best_bid=ema_result.best_bid, best_ask=ema_result.best_ask,
+                                                    momentum=momentum, significance=significance, sma_variance=sma_variance))
 
 
 @dataclass(frozen=True)
 class WindowedPairNodeConfig:
     __slots__ = ('node_config', 'n', 'n2')
- 
+
     node_config: Any
     n: int
     n2: int
@@ -621,47 +618,46 @@ class WindowedPairNode(Node[WindowedPairNodeConfig, tuple[NRT, NRT]]):
             self.publish_result((value, self.values[self.values.maxlen - self.config.n], self.values[0]))
 
 
-################################################################################
-# execution dirty workaround config
-################################################################################
-MOMENTUM_SIGNAL_SIGNIFICANCE_THRESHOLD = 1.6
-VARIANCE_THERESHOLD = 1.6
-Multiplier = 2.0
+# @dataclass
+# class MomentumIndicatorHistory:
+#     history: list[MomentumIndicatorResult]
+#     timestamps: list[float]
 
-symbol0 = 'ETHUSDT' 
-ordType0 = 'Limit' 
-StopLoss = 0.03
-orderQty0 = 5000
-bitmex_api_key = 'jo0EwnSb2OGwgGSaeQhS9L9s'
-bitmex_api_secret = 'cNxCSajoMTriNj-3zHXZGppigGd4uUeZbBEZrUYK2EGrN4We'
-client = bitmex.bitmex(test=False, api_key=bitmex_api_key, api_secret=bitmex_api_secret)
-################################################################################
+#     def record(self, momentum_indicator_result: MomentumIndicatorResult) -> int:
+#         self.history.append(momentum_indicator_result)
+#         self.timestamps.append(time.time())
+#         return len(self.history) - 1
 
-@dataclass
-class MomentumIndicatorHistory:
-    history: list[MomentumIndicatorResult]
-    timestamps: list[float]
+#     def query_history_upper_or_lower(self, start_index: int, end_index: int = -1) -> Optional[bool]:
+#         for cur_index in range(start_index, end_index, -1):
+#             momentum: MomentumIndicatorResult = self.history[cur_index]
+#             if momentum.midpoint_price > momentum.upper1:
+#                 return True
+#             elif momentum.midpoint_price < momentum.lower1:
+#                 return False
+#         return None
 
-    def record(self, momentum_indicator_result: MomentumIndicatorResult) -> int:
-        self.history.append(momentum_indicator_result)
-        self.timestamps.append(time.time())
-        return len(self.history) - 1
-
-    def query_history_upper_or_lower(self, start_index: int, end_index: int = -1) -> Optional[bool]:
-        for cur_index in range(start_index, end_index, -1):
-            momentum: MomentumIndicatorResult = self.history[cur_index]
-            if momentum.midpoint_price > momentum.upper1:
-                return True
-            elif momentum.midpoint_price < momentum.lower1:
-                return False
-        return None
 
 @dataclass(frozen=True)
 class MomentumSignalNodeConfig:
-    __slots__ = ('half_life', 'threshold')
+    __slots__ = ('half_life', 'threshold', 'MOMENTUM_SIGNAL_SIGNIFICANCE_THRESHOLD', 'VARIANCE_THERESHOLD',
+                 'symbol0', 'ordType0', 'StopLoss', 'orderQty0', 'bitmex_api_key', 'bitmex_api_secret',
+                 'is_live')
 
     half_life: int
     threshold: float
+
+    MOMENTUM_SIGNAL_SIGNIFICANCE_THRESHOLD: float
+    VARIANCE_THERESHOLD: float
+    
+
+    symbol0: str
+    ordType0: str
+    StopLoss: float
+    orderQty0: int
+    bitmex_api_key: str
+    bitmex_api_secret: str
+    is_live: bool
 
     def __post_init__(self):
         assert_positive_integer(self.half_life)
@@ -669,69 +665,209 @@ class MomentumSignalNodeConfig:
 
 
 class MomentumSignalNode(Node[MomentumSignalNodeConfig, Signal]):
-    __slots__ = ()
+    __slots__ = ('client', 'momentum_0')
 
     def __init__(self, engine: 'Engine', config: MomentumSignalNodeConfig) -> None:
         super().__init__(engine, config)
+        self.client = bitmex.bitmex(test=not config.is_live, api_key=config.bitmex_api_key, api_secret=config.bitmex_api_secret)
+
         momentum_indicator_node_config = MomentumIndicatorNodeConfig(half_life=config.half_life)
-        windowed_pair_node_config = WindowedPairNodeConfig(node_config=momentum_indicator_node_config, n=2, n2=config.half_life+1)
+        windowed_pair_node_config = WindowedPairNodeConfig(node_config=momentum_indicator_node_config, n=2, n2=config.half_life + 1)
         engine.subscribe_node_result(windowed_pair_node_config, self.handle_momenta)
-        
+        #self.tracking_map: OrderedDict[str, str] = OrderedDict()
+        #self.history = MomentumIndicatorHistory([], [])
+        #self.last_query_index = -1
+        self.momentum_0 = None
 
     def handle_momenta(self, momenta: tuple[MomentumIndicatorResult, MomentumIndicatorResult, MomentumIndicatorResult]):
         (current_momentum, previous_momentum, really_previous_momentum) = momenta
-      
-        momentum = (current_momentum.momentum / previous_momentum.momentum) if previous_momentum.momentum != 0 else 0
-        varRatio = (current_momentum.sma_variance) / (really_previous_momentum.sma_variance) if really_previous_momentum.sma_variance != 0 else 0
-        partial_message = f'[Current (MPP, momentum, significance, varRatio) is ({current_momentum.midpoint_price}, {current_momentum.momentum}, {current_momentum.significance}, {varRatio}).]'
-        # if not (current_momentum.significance > MOMENTUM_SIGNAL_SIGNIFICANCE_THRESHOLD and previous_momentum.significance > MOMENTUM_SIGNAL_SIGNIFICANCE_THRESHOLD):
-        positions = client.Position.Position_get(filter=json.dumps({'symbol': symbol0})).result()[0][0]  # to get 'isOpen', 'currentQty'
+        # record history
+        #record_index = self.history.record(current_momentum)
 
-        if not (current_momentum.significance < MOMENTUM_SIGNAL_SIGNIFICANCE_THRESHOLD and varRatio < VARIANCE_THERESHOLD):
-            logger.info(f'{partial_message}: No signal (due to insufficient significance).')
+
+        momentum = current_momentum.midpoint_price - previous_momentum.midpoint_price
+        momentum1 = current_momentum.midpoint_price - really_previous_momentum.midpoint_price
+        if self.momentum_0 is None:
             return
-        # buy/sell signals published here
-        if current_momentum.midpoint_price < current_momentum.lower:
+        momentum_difference = momentum1 - previous_momentum.momentum1
+        # Very end
+        self.momentum_0 = momentum1
+       
+
+        varRatio = (current_momentum.sma_variance) / (really_previous_momentum.sma_variance) if really_previous_momentum.sma_variance != 0 else 0
+        partial_message = f'[Current (MPP, bid, ask, momentum, momentum1, momentum_difference, varRatio) is ({current_momentum.midpoint_price}, {current_momentum.best_bid},  {current_momentum.best_ask}, {current_momentum.momentum}, {current_momentum.momentum1}, {current_momentum.momentum_difference}, {varRatio}).]'
+        #partial_message_newOrder = f'[Order (ID, orderQty, Price) is ({NewOrder[0]["orderID"][0:7]}, {NewOrder[0]["orderQty"]}, {NewOrder[0]["price"]}), StopLoss Order (ID, orderQty, Price) is  ({StopLoss[0]["orderID"][0:7]}, {StopLoss[0]["orderQty"]}, {StopLoss[0]["price"]})]'
+        #partial_message_closePosition = f'[Order (ID, orderQty, Price) is ({ClosePosition[0]["orderID"][0:7]}, {ClosePosition[0]["orderQty"]}, {ClosePosition[0]["price"]}).]'
+        
+
+        
+        positions = self.client.Position.Position_get(filter=json.dumps({'symbol': self.config.symbol0})).result()[0]  # to get 'isOpen', 'currentQty'
+        positions = positions[0] if len(positions) > 0 else {'currentQty': 0}
+        #lastOrder = self.client.Order.Order_getOrders(symbo 
+        if (momentum > 0 and momentum1 > 0 and momentum_difference > 0 and varRatio > self.config.VARIANCE_THERESHOLD):
             logger.info(f'{partial_message}: BUY signal!')
             self.publish_result(Signal.BUY)
             signal = Signal.BUY
-            if positions['currentQty'] == 0 :
-                CancelOrders = client.Order.Order_cancelAll().result()  #cancel only LTCUSDT orders
-                NewOrder = client.Order.Order_new(symbol=symbol0, orderQty=signal * orderQty0, ordType=ordType0, price=current_momentum.best_bid).result()
-                StopBuy = client.Order.Order_new(symbol=symbol, orderQty=-signal* orderQty0, ordType='Stop', stopPx=round(current_momentum.best_bid*(1-StopLoss),1), execInst='LastPrice').result()
-                logger.info(f'Create {signal.name} Buy order of orderID {Order[0]["orderID"][0:7]} and orderQty is {Order[0]["orderQty"]}')
-        
-            elif positions['currentQty'] < 0 :
+            # if positions['currentQty'] == 0:
+            #     CancelOrders = self.cancel_by_symbol(self.config.symbol0)
+            #     NewOrder = self.client.Order.Order_new(symbol=self.config.symbol0, orderQty=signal * self.config.orderQty0, ordType=self.config.ordType0, price=current_momentum.best_bid).result()
+            #     StopLoss = self.client.Order.Order_new(symbol=self.config.symbol0, orderQty=-signal * self.config.orderQty0, ordType='Stop', stopPx=round(current_momentum.best_bid * (1 - self.config.StopLoss), 0), execInst='LastPrice').result()
+            #     #CancelOrders = self.cancel_by_status(NewOrder)
+
+            #     self.place_order(StopLoss[0]['orderID'], NewOrder[0]['orderID'])
+            #     logger.info(f'[Order (ID, orderQty, Price) is ({NewOrder[0]["orderID"][0:7]}, {NewOrder[0]["orderQty"]}, {NewOrder[0]["price"]}), StopLoss Order (ID, orderQty, Price) is  ({StopLoss[0]["orderID"][0:7]}, {StopLoss[0]["orderQty"]}, {StopLoss[0]["price"]})]:BUY order!')
+
+            # elif positions['currentQty'] < 0:
+            #     ClosePosition = self.client.Order.Order_closePosition(symbol=self.config.symbol0).result()
+            #     logger.info(f'[Order (ID, orderQty, Price) is ({ClosePosition[0]["orderID"][0:7]}, {ClosePosition[0]["orderQty"]}, {ClosePosition[0]["price"]}).]:CLOSE order!')
+            #     CancelOrders = self.cancel_by_status(ClosePosition)
+
+            #     NewOrder = self.client.Order.Order_new(symbol=self.config.symbol0, orderQty=signal * self.config.orderQty0, ordType=self.config.ordType0, price=current_momentum.best_bid).result()
+            #     StopLoss   = self.client.Order.Order_new(symbol=self.config.symbol0, orderQty=-signal * self.config.orderQty0, ordType='Stop', stopPx=round(current_momentum.best_bid * (1 - self.config.StopLoss), 0), execInst='LastPrice').result()
                 
-                CancelOrders = client.Order.Order_cancelAll().result()  #cancel only LTCUSDT orders
-                NewOrder = client.Order.Order_new(symbol=symbol0, orderQty=signal * (-positions['currentQty'] + orderQty0), ordType=ordType0, price=current_momentum.best_bid).result()
-                StopBuy = client.Order.Order_new(symbol=symbol, orderQty=-signal* orderQty0, ordType='Stop', stopPx=round(current_momentum.best_bid*(1-StopLoss),1), execInst='LastPrice').result()
-                logger.info(f'Create {signal.name} Buy order of orderID {Order[0]["orderID"][0:7]} and orderQty is {Order[0]["orderQty"]}')
+            #     self.place_order(StopLoss[0]['orderID'], NewOrder[0]['orderID'])
+            #     logger.info(f'[Order (ID, orderQty, Price) is ({NewOrder[0]["orderID"][0:7]}, {NewOrder[0]["orderQty"]}, {NewOrder[0]["price"]}), StopLoss Order (ID, orderQty, Price) is  ({StopLoss[0]["orderID"][0:7]}, {StopLoss[0]["orderQty"]}, {StopLoss[0]["price"]})]:BUY order!')
+            
+        #     # elif positions['currentQty'] > 0:
+        #     #     logger.info(f'Position exists, no order placed')
+
+        # elif positions['currentQty'] < 0:
+        #         logger.info(f'{partial_message}: CLOSE signal!')
+        #         ClosePosition = self.client.Order.Order_closePosition(symbol=self.config.symbol0).result()
+        #         logger.info(f'[Order (ID, orderQty, Price) is ({ClosePosition[0]["orderID"][0:7]}, {ClosePosition[0]["orderQty"]}, {ClosePosition[0]["price"]}).]:CLOSE order!')
+        #         CancelOrders = self.cancel_by_status(ClosePosition)
 
 
-        elif current_momentum.midpoint_price > current_momentum.upper:
+        elif (momentum < 0 and momentum1 < 0 and momentum_difference < 0 and varRatio > self.config.VARIANCE_THERESHOLD):           
             logger.info(f'{partial_message}: SELL signal!')
             self.publish_result(Signal.SELL)
             signal = Signal.SELL
-            if positions['currentQty'] == 0 :
-                CancelOrders = client.Order.Order_cancelAll().result() # cancel only LTCUSDT orders
-                NewOrder = client.Order.Order_new(symbol=symbol0, orderQty=signal * orderQty0, ordType=ordType0, price=current_momentum.best_ask).result()
-                StopSell = client.Order.Order_new(symbol=symbol, orderQty=-signal* orderQty0, ordType='Stop', stopPx=round(current_momentum.best_bid*(1+ StopLoss),1), execInst='LastPrice').result()
-                logger.info(f'Create {signal.name} Sell order of orderID {Order[0]["orderID"][0:7]} and orderQty is {Order[0]["orderQty"]}')
-        
-            elif positions['currentQty'] > 0:
-                CancelOrders = client.Order.Order_cancelAll().result()  #cancel only LTCUSDT orders
-                NewOrder = client.Order.Order_new(symbol=symbol0, orderQty=signal * (-positions['currentQty'] + orderQty0), ordType=ordType0, price=current_momentum.best_bid).result()
-                StopSell = client.Order.Order_new(symbol=symbol, orderQty=-signal* orderQty0, ordType='Stop', stopPx=round(current_momentum.best_bid*(1+ StopLoss),1), execInst='LastPrice').result()
-                logger.info(f'Create {signal.name} Sell order of orderID {Order[0]["orderID"][0:7]} and orderQty is {Order[0]["orderQty"]}')
-       
+            # if positions['currentQty'] == 0:
+            #     CancelOrders = self.cancel_by_symbol(self.config.symbol0)
+            #     NewOrder = self.client.Order.Order_new(symbol=self.config.symbol0, orderQty=signal * self.config.orderQty0, ordType=self.config.ordType0, price=current_momentum.best_ask).result()
+            #     StopLoss = self.client.Order.Order_new(symbol=self.config.symbol0, orderQty=-signal * self.config.orderQty0, ordType='Stop', stopPx=round(current_momentum.best_ask * (1 + self.config.StopLoss), 0), execInst='LastPrice').result()
+            #     #CancelOrders = self.cancel_by_status(NewOrder)
 
+            #     self.place_order(StopLoss[0]['orderID'], NewOrder[0]['orderID'])
+            #     logger.info(f'[Order (ID, orderQty, Price) is ({NewOrder[0]["orderID"][0:7]}, {NewOrder[0]["orderQty"]}, {NewOrder[0]["price"]}), StopLoss Order (ID, orderQty, Price) is  ({StopLoss[0]["orderID"][0:7]}, {StopLoss[0]["orderQty"]}, {StopLoss[0]["price"]})]:SELL order!')
+
+            # elif positions['currentQty'] > 0:
+            #     ClosePosition = self.client.Order.Order_closePosition(symbol=self.config.symbol0).result()
+            #     logger.info(f'[Order (ID, orderQty, Price) is ({ClosePosition[0]["orderID"][0:7]}, {ClosePosition[0]["orderQty"]}, {ClosePosition[0]["price"]}).]:CLOSE order!')
+            #     CancelOrders = self.cancel_by_status(ClosePosition) #only cancel previous outstanding orders if ClosePosition` order get filled
+
+            #     NewOrder = self.client.Order.Order_new(symbol=self.config.symbol0, orderQty= signal * self.config.orderQty0, ordType=self.config.ordType0, price=current_momentum.best_ask).result()
+            #     StopLoss = self.client.Order.Order_new(symbol=self.config.symbol0, orderQty=-signal * self.config.orderQty0, ordType='Stop', stopPx=round(current_momentum.best_ask * (1 + self.config.StopLoss), 0), execInst='LastPrice').result()
+
+            #     self.place_order(StopLoss[0]['orderID'], NewOrder[0]['orderID']) #link StopLoss and NewOrder
+            #     logger.info(f'[Order (ID, orderQty, Price) is ({NewOrder[0]["orderID"][0:7]}, {NewOrder[0]["orderQty"]}, {NewOrder[0]["price"]}), StopLoss Order (ID, orderQty, Price) is  ({StopLoss[0]["orderID"][0:7]}, {StopLoss[0]["orderQty"]}, {StopLoss[0]["price"]})]:SELL order!')
+            
+            # elif positions['currentQty'] > 0:
+            #     logger.info(f'Position exists, no order placed')
+
+
+            # elif positions['currentQty'] > 0:
+            #     logger.info(f'{partial_message}: CLOSE signal!')
+            #     ClosePosition = self.client.Order.Order_closePosition(symbol=self.config.symbol0).result()
+            #     logger.info(f'[Order (ID, orderQty, Price) is ({ClosePosition[0]["orderID"][0:7]}, {ClosePosition[0]["orderQty"]}, {ClosePosition[0]["price"]}).]:CLOSE order!')
+            #     CancelOrders = self.cancel_by_status(ClosePosition)
+
+
+    #     elif current_momentum.lower1 <= current_momentum.midpoint_price <= current_momentum.upper1:
+    #         logger.info(f'{partial_message}: midpoint is between lower1 and upper1!' +
+    #                     f'[midpoint:{current_momentum.midpoint_price},lower1:{current_momentum.lower1},upper1:{current_momentum.upper1}]')
+    #         is_upper = self.history.query_history_upper_or_lower(record_index - 1, self.last_query_index)
+    #         self.last_query_index = record_index - 1
+    #         if is_upper is not None:
+    #             # cancel buy
+    #             if is_upper:
+    #                 logger.info(f'{partial_message}: The midpoint price was reduced from above upper1 to below upper1.Then cancel SELL orders.')
+    #                 self.cancel_by_symbol(self.config.symbol0, orderQty=Signal.SELL * self.config.orderQty0, ordType=self.config.ordType0)
+    #             # cancel sell
+    #             else:
+    #                 logger.info(f'{partial_message}: The midpoint price went up from below lower1 to above lower1.Then cancel BUY orders.')
+    #                 self.cancel_by_symbol(self.config.symbol0, orderQty=Signal.BUY * self.config.orderQty0, ordType=self.config.ordType0)
+    #         else:
+    #             logger.info(f'{partial_message}: Historical midpoint price are all between lower1 and upper1. There\'s no need to cancel orders.')
+
+    #     else:
+    #         logger.info(f'{partial_message}: No signal (price within threshold).')
+    #         return
+
+
+    # def tradeHistory(self):
+    #     tradeHist = self.client.Execution.Execution_getTradeHistory(symbol=self.config.symbol0, reverse=True).result()
+    #     prevType = tradeHist[0][0]['ordType']
+    #     prevSide = tradeHist[0][0]['side']
+    #     noBuy = 0
+    #     noSell = 0
+    #     if prevType == 'Stop':
+    #         if prevSide == 'Buy':
+    #             noSell = 1
+    #         elif prevSide == 'Sell':
+    #             noBuy = 1
+    #         else:
+    #             logger.info(f'Order Side Error: Response is neither Buy nor Sell')
+    #     else:
+    #         logger.info(f'previous order not stop order, signal generated')
         
+    #     return noBuy, noSell
+
+
+    # def cancel_by_status(self, order):
+    #     if self.client.Order.Order_getOrders(filter=json.dumps({'orderID': order[0]['orderID']})).result()[0][0]['ordStatus'] == 'Filled':
+    #         self.cancel_by_symbol(order[0]['symbol'])
+    #         print(f'previous Stop orders for {order[0]["side"]} Limit orders canceled')
+
+    # def cancel_by_symbol(self, symbol_in: str, **filter_dict) -> list:
+    #     filter_dict['open'] = True
+    #     orders, resp = self.client.Order.Order_getOrders(symbol=symbol_in, filter=json.dumps(filter_dict)).result()
+    #     if isinstance(orders, list):
+    #         if len(orders) == 0:
+    #             logger.warning('No order should be cancel')
+    #             return []
+    #         order_ids = []
+    #         for order in orders:
+    #             order_ids.append(order['orderID'])
+    #             order_ids += self.get_associated_order_id(order['orderID'])
+    #         cancelled = self.client.Order.Order_cancel(orderID=json.dumps(order_ids)).result()[0]
+    #         logger.info('Cancel orders success')
+    #         return cancelled
+    #     else:
+    #         logger.error(f'Query order before cancel failed.{filter_dict}')
+
+    # def place_order(self, associated_order_id: str, main_order_id: str):
+    #     """
+
+    #     :param associated_order_id: stop order id
+    #     :param man_order_id: main order id
+    #     :return:
+    #     """
+    #     self.tracking_map[associated_order_id] = main_order_id
+
+    # def remove_associated_orders_belongs_to_main_order_id(self, main_order_id: str):
+    #     for (k, v) in self.tracking_map.items():
+    #         if v == main_order_id:
+    #             self.tracking_map[k] = 'FINISHED'
+
+    # def is_order_already_associated(self, associated_order_id: str) -> bool:
+    #     return associated_order_id in self.tracking_map
+
+    # def get_main_order_id(self, associated_order_id: str) -> str:
+    #     return self.tracking_map.get(associated_order_id)
+
+    # def get_associated_order_id(self, main_order_id: str) -> list[str]:
+    #     ret: list[str] = []
+    #     for (k, v) in self.tracking_map.items():
+    #         if v == main_order_id:
+    #             ret.append(k)
+    #     return ret
+
 
 @dataclass(frozen=True)
 class MomentumStrategyConfig:
     # TODO: Use `@dataclass(slots=True)` once we're on Python 3.10.
-    __slots__ = ('half_life', 'threshold', 'per_trade_usage')
+    __slots__ = ('half_life', 'threshold', 'per_trade_usage', 'signal_execute_config')
 
     # Look-back duration (in seconds).
     half_life: int
@@ -739,6 +875,8 @@ class MomentumStrategyConfig:
     threshold: float
     # Percentage of available balance (including margin) to use when a buy or sell signal is emitted.
     per_trade_usage: float
+
+    signal_execute_config: dict[str, int | str | bool]
 
     def __post_init__(self) -> None:
         assert_positive_integer(self.half_life)
@@ -753,7 +891,10 @@ class MomentumStrategy:
         engine.register_node_type(MomentumIndicatorNodeConfig, MomentumIndicatorNode)
         engine.register_node_type(WindowedPairNodeConfig, WindowedPairNode)
         engine.register_node_type(MomentumSignalNodeConfig, MomentumSignalNode)
-        engine.get_node(MomentumSignalNodeConfig(half_life=config.half_life, threshold=config.threshold))  # TODO
+
+        signal_execute_config = config.signal_execute_config
+        signal_execute_config.update(half_life=config.half_life, threshold=config.threshold)
+        engine.get_node(MomentumSignalNodeConfig(**signal_execute_config))  # TODO
 
 
 ########################################################################################################################
@@ -828,6 +969,7 @@ def get_config() -> tuple[int, Optional[Path], EngineConfig, BitmexExchangeConfi
         half_life=config['strategy']['halfLife'],
         threshold=config['strategy']['threshold'],
         per_trade_usage=config['strategy']['perTradeUsage'],
+        signal_execute_config=config['strategy']['signal_execute_config'],
     )
     execution_config = WorkTheBidExecutionConfig(
         max_depth=config['execution']['maxDepth'],
