@@ -671,32 +671,28 @@ class MomentumSignalNode(Node[MomentumSignalNodeConfig, Signal]):
         self.client = bitmex.bitmex(test=not config.is_live, api_key=config.bitmex_api_key, api_secret=config.bitmex_api_secret)
 
         momentum_indicator_node_config = MomentumIndicatorNodeConfig(half_life=config.half_life)
-        windowed_pair_node_config = WindowedPairNodeConfig(node_config=momentum_indicator_node_config, n=2, n2=config.half_life + 1)
+        windowed_pair_node_config = WindowedPairNodeConfig(node_config=momentum_indicator_node_config, n=2, n2=config.half_life + 1, n2=config.half_life + 2)
         engine.subscribe_node_result(windowed_pair_node_config, self.handle_momenta)
         #self.tracking_map: OrderedDict[str, str] = OrderedDict()
         #self.history = MomentumIndicatorHistory([], [])
         #self.last_query_index = -1
         self.momentum_0 = None
 
-    def handle_momenta(self, momenta: tuple[MomentumIndicatorResult, MomentumIndicatorResult, MomentumIndicatorResult]):
-        (current_momentum, previous_momentum, really_previous_momentum) = momenta
+    def handle_momenta(self, momenta: tuple[MomentumIndicatorResult, MomentumIndicatorResult, MomentumIndicatorResult, MomentumIndicatorResult]):
+        (current_momentum, previous_momentum_1, previous_momentum_2, previous_momentum_3) = momenta
         # record history
         #record_index = self.history.record(current_momentum)
 
 
         momentum0 = current_momentum.midpoint_price - previous_momentum.midpoint_price
-        momentum1 = current_momentum.midpoint_price - really_previous_momentum.midpoint_price
+        momentum1 = current_momentum.midpoint_price - previous_momentum_2.midpoint_price
+        momentum2 = previous_momentum_1.midpoint_price - previous_momentum_3.midpoint_price
         if self.momentum_0 is None:
             return
-        momentum_difference = momentum1 - previous_momentum.momentum1
-        # Very end
-        self.momentum_0 = momentum1
-       
-
+        momentum_difference = momentum1 - momentum2
+      
         varRatio = (current_momentum.sma_variance) / (really_previous_momentum.sma_variance) if really_previous_momentum.sma_variance != 0 else 0
         partial_message = f'[Current (MPP, bid, ask, momentum0, momentum1, momentum_difference, varRatio) is ({current_momentum.midpoint_price}, {current_momentum.best_bid},  {current_momentum.best_ask}, {current_momentum.momentum0}, {current_momentum.momentum1}, {current_momentum.momentum_difference}, {varRatio}).]'
-        
-        
         
         
         positions = self.client.Position.Position_get(filter=json.dumps({'symbol': self.config.symbol0})).result()[0]  # to get 'isOpen', 'currentQty'
