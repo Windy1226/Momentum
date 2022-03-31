@@ -1,0 +1,36 @@
+
+
+def trailingstop(self):
+	
+	if positions["currentQty"] > 0:
+		
+		if current_momentum.midpoint_price <= previous_momentum.midpoint_price :
+			longStop = max(longStop, previous_momentum.midpoint_price *0.97)
+		else:
+			longStop = current_momentum.midpoint_price *0.97
+
+		if current_momentum.midpoint_price < longStop
+			trailingstop = True
+
+
+	if positions['currentQty'] < 0:
+		if current_momentum.midpoint_price >= previous_momentum.midpoint_price:
+			shortStop = min(shortStop, previous_momentum.midpoint_price *1.03)
+		if current_momentum.midpoint_price < previous_momentum.midpoint_price:
+			shortStop = current_momentum.midpoint_price * 1.03
+
+		if current_momentum.midpoint_price > shortStop:
+			trailingstop = True
+
+		else
+
+	if positions['currentQty'] == 0:
+		longStop = 0
+		shortStop = 9999999
+		trailingstop = False
+
+
+
+if trailingstop = True
+
+	NewOrder = client.Order.Order_new(symbol=symbol, orderQty= - positions["currentQty"] , ordType='Market').result()
