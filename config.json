@@ -1,0 +1,36 @@
+{
+  "symbol": "ETHUSDT",
+  "baseCurrency": "ETH",
+  "quoteCurrency": "USDT",
+  "accountCurrency": "USDt",
+  "settlementCurrency": "USDt",
+  "leverage": 2.0,
+  "positionCurrency": "ETH",
+  "exchange": {
+    "isLive": true,
+    "apiKey": "jo0EwnSb2OGwgGSaeQhS9L9s"
+  },
+  "strategy": {
+    "halfLife": 10,
+    "threshold": 0.2,
+    "perTradeUsage": 0.02,
+    "signal_execute_config": {
+      "MOMENTUM_SIGNAL_SIGNIFICANCE_THRESHOLD": 1.6,
+      "VARIANCE_THERESHOLD": 0.0,
+      "symbol0": "ETHUSDT",
+      "ordType0": "Limit",
+      "StopLoss": 0.03,
+      "orderQty0": 8000,
+      "is_live": true,
+      "bitmex_api_key": "jo0EwnSb2OGwgGSaeQhS9L9s",
+      "bitmex_api_secret": "cNxCSajoMTriNj-3zHXZGppigGd4uUeZbBEZrUYK2EGrN4We"
+    }
+  },
+  "execution": {
+    "maxDepth": 3,
+    "minTradeLots": 5,
+    "orderRatio": 0.2,
+    "renewAfterDuration": 60.0,
+    "renewAfterTradeLots": 60
+  }
+}
