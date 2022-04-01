@@ -576,7 +576,7 @@ class MomentumIndicatorNode(Node[MomentumIndicatorNodeConfig, MomentumIndicatorR
     def __init__(self, engine: 'Engine', config: MomentumIndicatorNodeConfig) -> None:
         super().__init__(engine, config)
         self.magic_constant = 2 * math.log(2) / config.half_life
-        l2_order_book_tick_node_config = DiscretisedL2OrderBookTickNodeConfig(duration=300.)
+        l2_order_book_tick_node_config = DiscretisedL2OrderBookTickNodeConfig(duration=1.)
         mpp_node_config = MidpointPriceNodeConfig(l2_order_book_tick_node_config=l2_order_book_tick_node_config)
         alpha = 2 / (config.half_life + 1)
         ema_node_config = ExponentialMovingAverageNodeConfig(node_config=mpp_node_config, alpha=alpha, sma_lookback=config.half_life)
@@ -668,7 +668,7 @@ class MomentumSignalNodeConfig:
 class MomentumSignalNode(Node[MomentumSignalNodeConfig, Signal]):
     __slots__ = ('client',)
 
-    def __init__(self, engine: 'Engine', config: MomentumSignalNodeConfig, position) -> None:
+    def __init__(self, engine: 'Engine', config: MomentumSignalNodeConfig) -> None:
         super().__init__(engine, config)
         self.client = bitmex.bitmex(test=not config.is_live, api_key=config.bitmex_api_key, api_secret=config.bitmex_api_secret)
 
@@ -685,6 +685,7 @@ class MomentumSignalNode(Node[MomentumSignalNodeConfig, Signal]):
         # record history
         #record_index = self.history.record(current_momentum)
 
+        position1 = 0
 
         momentum0 = current_momentum.midpoint_price - previous_momentum_1.midpoint_price
         momentum1 = current_momentum.midpoint_price - previous_momentum_2.midpoint_price
@@ -695,29 +696,46 @@ class MomentumSignalNode(Node[MomentumSignalNodeConfig, Signal]):
         varRatio = (current_momentum.sma_variance) / (previous_momentum_2.sma_variance) if previous_momentum_2.sma_variance != 0 else 0
         partial_message = f'[Current (MPP, bid, ask, momentum0, momentum1, momentum2, momentum_difference, varRatio) is ({current_momentum.midpoint_price}, {current_momentum.best_bid},  {current_momentum.best_ask}, {momentum0}, {momentum1}, {momentum2}, {momentum_difference}, {varRatio}).]'
         
-        self.position=0
-        
         # positions = self.client.Position.Position_get(filter=json.dumps({'symbol': self.config.symbol0})).result()[0]  # to get 'isOpen', 'currentQty'
-        # positions = positions[0] if len(positions) > 0 else {'currentQty': 0}
-       
+        # positions = positions[0] if len(positions) > 0 else {'currentQty': 0
+
+                #NewOrder = client.Order.Order_new(symbol=symbol, orderQty= - positions["currentQty"] , ordType='Market').result()
+        
         if (momentum0 > 0 and momentum1 > 0 and momentum_difference > 0 and varRatio > self.config.VARIANCE_THERESHOLD):
     
             logger.info(f'{partial_message}: BUY signal!')
             self.publish_result(Signal.BUY)
             signal = Signal.BUY
-  
-            if position <=0,
-                position += 1
-          
-
-
-
+            position1 += 1
+            if position1 > 0:
+                if current_momentum.midpoint_price <= previous_momentum_1.midpoint_price:
+                    longStop = max(longStop, previous_momentum_1.midpoint_price *0.97)
+                    logger.info(f'Long stop = {longStop}')
+                else:
+                    longStop = current_momentum.midpoint_price *0.97
+                    logger.info(f'Long stop = {longStop}')
+                if current_momentum.midpoint_price < longStop:
+                    # trailingstop = True
+                    logger.info(f'Long stop = {longStop}')
         elif (momentum0 < 0 and momentum1 < 0 and momentum_difference < 0 and varRatio > self.config.VARIANCE_THERESHOLD):      
-   
             logger.info(f'{partial_message}: SELL signal!')
             self.publish_result(Signal.SELL)
             signal = Signal.SELL
-
+            position1 -= 1
+            if position1 < 0:
+                if current_momentum.midpoint_price >= previous_momentum_1.midpoint_price:
+                    shortStop = min(shortStop, previous_momentum.midpoint_price *1.03)
+                    logger.info(f'Short stop = {shortStop}')
+                if current_momentum.midpoint_price < previous_momentum_1.midpoint_price:
+                    shortStop = current_momentum.midpoint_price * 1.03
+                    logger.info(f'Short stop = {shortStop}')
+                if current_momentum.midpoint_price > shortStop:
+                    logger.info(f'Short stop = {shortStop}')
+                #    logger.info(f'Short stop = {shortStop}')
+                elif (position1 == 0):
+                    longStop = 0
+                    shortStop = 9999999
+                    trailingstop = False
         else:
             logger.info(f'{partial_message}: No signal (price within threshold).')
             return
