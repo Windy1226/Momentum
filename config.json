@@ -8,7 +8,7 @@
   "positionCurrency": "ETH",
   "exchange": {
     "isLive": true,
-    "apiKey": "jo0EwnSb2OGwgGSaeQhS9L9s"
+    "apiKey": ""
   },
   "strategy": {
     "halfLife": 10,
@@ -22,8 +22,8 @@
       "StopLoss": 0.03,
       "orderQty0": 8000,
       "is_live": true,
-      "bitmex_api_key": "jo0EwnSb2OGwgGSaeQhS9L9s",
-      "bitmex_api_secret": "cNxCSajoMTriNj-3zHXZGppigGd4uUeZbBEZrUYK2EGrN4We"
+      "bitmex_api_key": "",
+      "bitmex_api_secret": ""
     }
   },
   "execution": {
