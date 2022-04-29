@@ -20,7 +20,7 @@ from typing import Any, Callable, Generic, Optional, TypeVar, Union
 
 import bitmex  # type: ignore[import]
 from bitmex_websocket import BitMEXWebsocket  # type: ignore[import]
-
+import ccxtpro, ccxt 
 
 ########################################################################################################################
 # Globals
@@ -119,6 +119,22 @@ class L2OrderBookTick:
     bids: list[OrderBookLevel]
     asks: list[OrderBookLevel]
 
+@dataclass(frozen=True)
+class Position:
+    # TODO: Use `@dataclass(slots=True)` once we're on Python 3.10.
+    __slots__ = ('monotonic_timestamp_ns', 'current_quantity')
+
+    monotonic_timestamp_ns: int
+    current_quantity: int
+
+
+@dataclass(frozen=True)
+class Wallet:
+    # TODO: Use `@dataclass(slots=True)` once we're on Python 3.10.
+    __slots__ = ('monotonic_timestamp_ns', 'current_balance')
+
+    monotonic_timestamp_ns: int
+    current_balance: int
 
 @dataclass(frozen=True)
 class HackyMcHackface:
@@ -234,6 +250,40 @@ class L2OrderBookTickNode(Node[L2OrderBookTickNodeConfig, L2OrderBookTick]):
             tick = await self.engine.l2_order_book_tick_queue.get()
             self.publish_result(tick)
 
+@dataclass(frozen=True)
+class PositionNodeConfig:
+    __slots__ = ()
+
+
+class PositionNode(Node[PositionNodeConfig, Position]):
+    __slots__ = ()
+
+    def __init__(self, engine: 'Engine', config: PositionNodeConfig) -> None:
+        super().__init__(engine, config)
+        engine.loop.create_task(self.drain_queue())
+
+    async def drain_queue(self) -> None:
+        while True:
+            position = await self.engine.position_queue.get()
+            print('From PositionNode', position)
+            self.publish_result(position)
+
+@dataclass(frozen=True)
+class WalletNodeConfig:
+    __slots__ = ()
+
+class WalletNode(Node[WalletNodeConfig, Wallet]):
+    __slots__ = ()
+
+    def __init__(self, engine: 'Engine', config: WalletNodeConfig) -> None:
+        super().__init__(engine, config)
+        engine.loop.create_task(self.drain_queue())
+
+    async def drain_queue(self) -> None:
+        while True:
+            wallet = await self.engine.wallet_queue.get()
+            print('From WalletNode', wallet)
+            self.publish_result(wallet)
 
 @dataclass(frozen=True)
 class DiscretisedL2OrderBookTickNodeConfig:
@@ -376,18 +426,22 @@ class EngineConfig:
 
 
 class Engine:
-    __slots__ = ('config', 'loop', 'l2_order_book_tick_queue', 'node_type_registry', 'node_registry', 'node_subscriptions')
+    __slots__ = ('config', 'loop', 'l2_order_book_tick_queue', 'position_queue', 'wallet_queue','node_type_registry', 'node_registry', 'node_subscriptions')
 
     def __init__(self, config: EngineConfig) -> None:
         self.config = config
         self.loop = asyncio.get_event_loop()
         self.l2_order_book_tick_queue: asyncio.Queue[L2OrderBookTick] = asyncio.Queue()
+        self.position_queue: asyncio.Queue[Position] = asyncio.Queue()
+        self.wallet_queue: asyncio.Queue[Wallet] = asyncio.Queue()
         self.node_type_registry: dict[type[Any], type[Node]] = {}
         self.node_registry: dict[Any, Node] = {}
         self.node_subscriptions: dict[Node, set[Callable[[Any], None]]] = defaultdict(set)
 
         self.register_node_type(TimerNodeConfig, TimerNode)
         self.register_node_type(L2OrderBookTickNodeConfig, L2OrderBookTickNode)
+        self.register_node_type(PositionNodeConfig, PositionNode)
+        self.register_node_type(WalletNodeConfig, WalletNode)
         self.register_node_type(DiscretisedL2OrderBookTickNodeConfig, DiscretisedL2OrderBookTickNode)
         self.register_node_type(MidpointPriceNodeConfig, MidpointPriceNode)
         self.register_node_type(ExponentialMovingAverageNodeConfig, ExponentialMovingAverageNode)
@@ -454,11 +508,19 @@ class BitmexExchange:
     __slots__ = ('client', 'ws')
 
     def __init__(self, engine: Engine, config: BitmexExchangeConfig) -> None:
-        self.client = bitmex.bitmex(
-            test=not config.is_live,
-            api_key=config.api_key,
-            api_secret=config.api_secret,
-        )
+        # self.client = bitmex.bitmex(
+        #     test=not config.is_live,
+        #     api_key=config.api_key,
+        #     api_secret=config.api_secret,
+        # )
+        exchange_class = getattr(ccxt, 'bitmex')
+        self.client = exchange_class({
+            'apiKey': config.api_key,
+            'secret': config.api_secret,
+            # 'asyncio_loop': self.loop,
+            'test': True
+        })
+        self.client.set_sandbox_mode(True)
 
         def l2_order_book_tick_queue_putter(tick: L2OrderBookTick):
             """
@@ -467,15 +529,24 @@ class BitmexExchange:
             """
             engine.loop.call_soon_threadsafe(engine.l2_order_book_tick_queue.put_nowait, tick)
 
+        def position_queue_putter(position: Position):
+            engine.loop.call_soon_threadsafe(engine.position_queue.put_nowait, position)
+
+        def wallet_queue_putter(wallet: Wallet):
+            engine.loop.call_soon_threadsafe(engine.wallet_queue.put_nowait, wallet)
+
         def connect() -> None:
             self.ws = BitmexWebsocketEx(
                 engine_config=engine.config,
                 l2_order_book_tick_queue_putter=l2_order_book_tick_queue_putter,
+                position_queue_putter=position_queue_putter,
+                wallet_queue_putter=wallet_queue_putter,
                 on_close=reconnect,
                 endpoint=f'''wss://ws.{'' if config.is_live else 'testnet.'}bitmex.com/realtime''',
                 symbol=engine.config.symbol,
                 api_key=config.api_key,
                 api_secret=config.api_secret,
+                client=self.client,
                 subscriptions=(
                     'instrument',
                     'orderBookL2',
@@ -488,6 +559,13 @@ class BitmexExchange:
                     'wallet',
                 )
             )
+            # ExchangeClient(
+            #     engine_config=engine.config,
+            #     l2_order_book_tick_queue_putter=l2_order_book_tick_queue_putter,
+            #     position_queue_putter=position_queue_putter,
+            #     wallet_queue_putter=wallet_queue_putter,
+            #     on_close=reconnect
+            #     )
 
         def reconnect() -> None:
             logger.warning('Websocket closed! Will reconnect.')
@@ -495,13 +573,40 @@ class BitmexExchange:
 
         connect()
 
+# class ExchangeClient:
+#     __slots__ = ('engine_config', 'l2_order_book_tick_queue_putter', 'position_queue_putter', 'wallet_queue_putter', 'on_close')
+
+#     def __init__(self, engine_config: EngineConfig, l2_order_book_tick_queue_putter: Callable[[L2OrderBookTick], None], position_queue_putter: Callable[[Position], None], wallet_queue_putter:Callable[[Wallet], None], on_close: Callable[[], None], *args, **kwargs) -> None: 
+#         self.engine_config = engine_config
+#         self.l2_order_book_tick_queue_putter = l2_order_book_tick_queue_putter
+#         self.position_queue_putter = position_queue_putter
+#         self.wallet_queue_putter = wallet_queue_putter
+#         self.on_close = on_close
+#         super().__init__(*args, **kwargs)
+
+#     async def RawPositions(self, symbol: str, handler):
+#         positions = await self.exchange.fetch_positions(symbol)
+#         # self.exchange.close()
+#         pos =  (int(positions[0]['currentQty']))
+#         # print(positions)
+#         self.position_queue_putter()    
+#     async def Balance(self, handler):
+#         balance = await self.exchange.fetch_balance()
+#         await handler(balance)
 
 class BitmexWebsocketEx(BitMEXWebsocket):
-    __slots__ = ('engine_config', 'l2_order_book_tick_queue_putter', 'on_close')
+    __slots__ = ('engine_config', 'l2_order_book_tick_queue_putter', 'position_queue_putter', 'wallet_queue_putter', 'on_close')
 
-    def __init__(self, engine_config: EngineConfig, l2_order_book_tick_queue_putter: Callable[[L2OrderBookTick], None], on_close: Callable[[], None], *args, **kwargs) -> None:
+    def __init__(self, engine_config: EngineConfig, l2_order_book_tick_queue_putter: Callable[[L2OrderBookTick], None], 
+                 position_queue_putter: Callable[[Position], None], wallet_queue_putter:Callable[[Wallet], None], 
+                 on_close: Callable[[], None], 
+                 client,
+                 *args, **kwargs) -> None: 
         self.engine_config = engine_config
         self.l2_order_book_tick_queue_putter = l2_order_book_tick_queue_putter
+        self.position_queue_putter = position_queue_putter
+        self.wallet_queue_putter = wallet_queue_putter
+        self.client = client
         self.on_close = on_close
         super().__init__(*args, **kwargs)
 
@@ -513,12 +618,24 @@ class BitmexWebsocketEx(BitMEXWebsocket):
             table = deserialised_message.get('table')
             if table == 'orderBookL2':
                 self.__put_l2_order_book_tick_exchange_event(monotonic_timestamp_ns)
+            elif table == 'position':
+                self.__put_position_exchange_event(monotonic_timestamp_ns)
+            elif table == 'wallet':
+                self.__put_wallet_exchange_event(monotonic_timestamp_ns)
 
     def _BitMEXWebsocket__on_close(self) -> None:
         super()._BitMEXWebsocket__on_close()
         self.on_close()
 
     def __put_l2_order_book_tick_exchange_event(self, monotonic_timestamp_ns: int) -> None:
+        # relevant_data = self.client.fetch_positions('XBTUSDT')
+        # pos = (int(relevant_data[0]['currentQty']))
+        # print(pos)
+
+        # data = self.client.fetch_balance()
+        # current_balance = data['USDT']['free']
+        # print(current_balance)
+
         data = self.data['orderBookL2']
         bids = sorted((
             OrderBookLevel(price=datum['price'], volume=datum['size'])
@@ -537,7 +654,37 @@ class BitmexWebsocketEx(BitMEXWebsocket):
             bids=bids,
             asks=asks,
         )
+        # print('thx')
         self.l2_order_book_tick_queue_putter(l2_order_book_tick)
+
+    # def __put_position_exchange_event(self, monotonic_timestamp_ns: int) -> None:
+    #     relevant_data = list(filter(lambda position: position['symbol'] == self.engine_config.symbol, self.data['position']))
+    #     assert len(relevant_data) <= 1
+    #     current_quantity = relevant_data[0]['currentQty'] if relevant_data else 0
+    #     position = Position(monotonic_timestamp_ns=monotonic_timestamp_ns, current_quantity=current_quantity)
+    #     self.position_queue_putter(position)
+
+    # def __put_wallet_exchange_event(self, monotonic_timestamp_ns: int) -> None:
+    #     data = self.data['wallet']
+    #     current_balance = data['USDT']['free']
+    #     balance = Balance(monotonic_timestamp_ns=monotonic_timestamp_ns, current_balance=current_balance)
+    #     self.wallet_queue_putter(balance)
+
+    def __put_position_exchange_event(self, monotonic_timestamp_ns: int) -> None:
+        relevant_data = self.client.fetch_positions('XBTUSDT')
+        assert len(relevant_data) <= 1
+        current_quantity = relevant_data[0]['currentQty'] if relevant_data else 0
+        position = Position(monotonic_timestamp_ns=monotonic_timestamp_ns, current_quantity=current_quantity)
+        print('Position from exchange event', current_quantity)
+        self.position_queue_putter(position)
+
+    def __put_wallet_exchange_event(self, monotonic_timestamp_ns: int) -> None:
+        data = self.client.fetch_balance()
+        current_balance = data['USDT']['free']
+        balance = Wallet(monotonic_timestamp_ns=monotonic_timestamp_ns, current_balance=current_balance)
+        print('Balance from exchange event', current_balance)
+        self.wallet_queue_putter(balance)
+
 
 
 ########################################################################################################################
@@ -666,33 +813,37 @@ class MomentumSignalNodeConfig:
 
 
 class MomentumSignalNode(Node[MomentumSignalNodeConfig, Signal]):
-    __slots__ = ('client',)
+    __slots__ = ('client', 'position', 'wallet')
 
     def __init__(self, engine: 'Engine', config: MomentumSignalNodeConfig) -> None:
         super().__init__(engine, config)
-        self.client = bitmex.bitmex(test=not config.is_live, api_key=config.bitmex_api_key, api_secret=config.bitmex_api_secret)
+        # self.client = bitmex.bitmex(test=not config.is_live, api_key=config.bitmex_api_key, api_secret=config.bitmex_api_secret)
 
         momentum_indicator_node_config = MomentumIndicatorNodeConfig(half_life=config.half_life)
         windowed_pair_node_config = WindowedPairNodeConfig(node_config=momentum_indicator_node_config, n=2, n2=config.half_life + 1, n3=config.half_life + 2)
         engine.subscribe_node_result(windowed_pair_node_config, self.handle_momenta)
+        engine.subscribe_node_result(PositionNodeConfig(), self.handle_position_update)
+        engine.subscribe_node_result(WalletNodeConfig(), self.handle_wallet_update)
         #self.tracking_map: OrderedDict[str, str] = OrderedDict()
         #self.history = MomentumIndicatorHistory([], [])
         #self.last_query_index = -1
 
+        self.position = Position(monotonic_timestamp_ns=0, current_quantity=0)
+        self.wallet = Wallet(monotonic_timestamp_ns=0, current_balance=0)
 
     def handle_momenta(self, momenta: tuple[MomentumIndicatorResult, MomentumIndicatorResult, MomentumIndicatorResult, MomentumIndicatorResult]):
         (current_momentum, previous_momentum_1, previous_momentum_2, previous_momentum_3) = momenta
         # record history
         #record_index = self.history.record(current_momentum)
 
-        position1 = 0
-
         momentum0 = current_momentum.midpoint_price - previous_momentum_1.midpoint_price
         momentum1 = current_momentum.midpoint_price - previous_momentum_2.midpoint_price
         momentum2 = previous_momentum_1.midpoint_price - previous_momentum_3.midpoint_price
 
+
         momentum_difference = momentum1 - momentum2
-      
+        # print('0', momentum0, '1', momentum1, '2', momentum2, 'diff', momentum_difference)
+
         varRatio = (current_momentum.sma_variance) / (previous_momentum_2.sma_variance) if previous_momentum_2.sma_variance != 0 else 0
         partial_message = f'[Current (MPP, bid, ask, momentum0, momentum1, momentum2, momentum_difference, varRatio) is ({current_momentum.midpoint_price}, {current_momentum.best_bid},  {current_momentum.best_ask}, {momentum0}, {momentum1}, {momentum2}, {momentum_difference}, {varRatio}).]'
         
@@ -700,14 +851,15 @@ class MomentumSignalNode(Node[MomentumSignalNodeConfig, Signal]):
         # positions = positions[0] if len(positions) > 0 else {'currentQty': 0
 
                 #NewOrder = client.Order.Order_new(symbol=symbol, orderQty= - positions["currentQty"] , ordType='Market').result()
-        
+
+        # print('its working')        
         if (momentum0 > 0 and momentum1 > 0 and momentum_difference > 0 and varRatio > self.config.VARIANCE_THERESHOLD):
-    
+            print('Current positions: ', self.position.current_quantity)
+            print('Current balance: ', self.wallet.current_balance)
             logger.info(f'{partial_message}: BUY signal!')
             self.publish_result(Signal.BUY)
             signal = Signal.BUY
-            position1 += 1
-            if position1 > 0:
+            if int(self.position.current_quantity) > 0:
                 if current_momentum.midpoint_price <= previous_momentum_1.midpoint_price:
                     longStop = max(longStop, previous_momentum_1.midpoint_price *0.97)
                     logger.info(f'Long stop = {longStop}')
@@ -718,11 +870,12 @@ class MomentumSignalNode(Node[MomentumSignalNodeConfig, Signal]):
                     # trailingstop = True
                     logger.info(f'Long stop = {longStop}')
         elif (momentum0 < 0 and momentum1 < 0 and momentum_difference < 0 and varRatio > self.config.VARIANCE_THERESHOLD):      
+            print('Current positions: ', self.position.current_quantity)
+            print('Current balance: ', self.wallet.current_balance)    
             logger.info(f'{partial_message}: SELL signal!')
             self.publish_result(Signal.SELL)
             signal = Signal.SELL
-            position1 -= 1
-            if position1 < 0:
+            if int(self.position.current_quantity) < 0:
                 if current_momentum.midpoint_price >= previous_momentum_1.midpoint_price:
                     shortStop = min(shortStop, previous_momentum.midpoint_price *1.03)
                     logger.info(f'Short stop = {shortStop}')
@@ -741,8 +894,11 @@ class MomentumSignalNode(Node[MomentumSignalNodeConfig, Signal]):
             return
 
 
+    def handle_position_update(self, position: Position) -> None:
+        self.position = position
 
-
+    def handle_wallet_update(self, wallet: Wallet) -> None:
+        self.wallet = wallet 
 
 @dataclass(frozen=True)
 class MomentumStrategyConfig:
@@ -815,7 +971,12 @@ class WorkTheBidExecutionConfig:
 def main() -> None:
     (verbosity, log_file, engine_config, exchange_config, strategy_config, execution_config) = get_config()
     init_logging(verbosity, log_file)
-
+    symbol = 'XBTUSDT'
+    # exchange1 = ExchangeClient.ExchangeClient1(exchange_id='bitmex', api_key=exchange_config.api_key, secret=exchange_config.api_secret)
+    # exchangeObserver = ExchangeClient.ExchangeCLientConsumer(exchange1)
+    # print("HELLO")
+    # exchange1.pr()
+    # exchange1.RawPositions(symbol, exchangeObserver.print_position)
     engine = Engine(engine_config)
     exchange = BitmexExchange(engine, exchange_config)
     strategy = MomentumStrategy(engine, strategy_config)
@@ -842,8 +1003,8 @@ def get_config() -> tuple[int, Optional[Path], EngineConfig, BitmexExchangeConfi
     exchange_config = BitmexExchangeConfig(
         is_live=config['exchange']['isLive'],
         api_key=config['exchange']['apiKey'],
-        api_secret=getpass(f'''Enter BitMEX API key secret (for ID `{config['exchange']['apiKey']}`): ''')  # ask for secret input from terminal
-        # api_secret=config['exchange']['apiSecret']
+        # api_secret=getpass(f'''Enter BitMEX API key secret (for ID `{config['exchange']['apiKey']}`): ''')  # ask for secret input from terminal
+        api_secret=config['exchange']['apiSecret']
     )
     strategy_config = MomentumStrategyConfig(
         half_life=config['strategy']['halfLife'],

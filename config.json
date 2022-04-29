@@ -7,8 +7,10 @@
   "leverage": 2.0,
   "positionCurrency": "ETH",
   "exchange": {
-    "isLive": true,
-    "apiKey": ""
+    "isLive": false,
+    "apiKey": "vlBziQB9bM6_AHeRGXVO7LV1",
+    "apiSecret": "huJcBBCc4Nh6DdhinXlcwopGRNwFAYv9idxK4MdraSkqHA5t"
+
   },
   "strategy": {
     "halfLife": 10,
@@ -21,9 +23,10 @@
       "ordType0": "Limit",
       "StopLoss": 0.03,
       "orderQty0": 8000,
-      "is_live": true,
-      "bitmex_api_key": "",
-      "bitmex_api_secret": ""
+      "is_live": false,
+      "bitmex_api_key": "vlBziQB9bM6_AHeRGXVO7LV1",
+      "bitmex_api_secret": "huJcBBCc4Nh6DdhinXlcwopGRNwFAYv9idxK4MdraSkqHA5t"
+
     }
   },
   "execution": {
